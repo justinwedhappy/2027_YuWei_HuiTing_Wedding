@@ -21,19 +21,21 @@
     --donebg:#EEEAF6;
     --gold:#C9A45C;
   }
-  /* 家宴：古典正式——淡玫瑰粉、酒紅、香檳金 */
+  /* 家宴：復古古典花系——乾燥玫瑰、酒紅、香檳金、蕾絲與珍珠 */
   body.ev-0306{
     --ink:#3B2230; --ink-soft:#7A5F6B;
-    --accent:#B04A62; --accent-deep:#8C2E45; --accent-soft:#FBE8EC; --bg:#FFF9F8; --line:#EED3D9;
-    --band:#F4D5DC;
-    --band-pattern:radial-gradient(rgba(255,255,255,.55) 1.4px, transparent 1.6px);
-    --band-edge:linear-gradient(var(--gold),var(--gold)) 0 0/100% 2px no-repeat, linear-gradient(var(--gold),var(--gold)) 0 6px/100% 1px no-repeat;
+    --accent:#A8475D; --accent-deep:#7E2A3E; --accent-soft:#F8E7E9; --bg:#FFFBF7; --line:#EFDCDC;
+    --band:#F8E8E5;
+    --band-pattern:radial-gradient(rgba(255,255,255,.75) 1.3px, transparent 1.7px);
+    --edge-h:20px;
+    --band-edge:radial-gradient(circle at 10px 20px, #FFFBF7 0 10px, transparent 10.6px) 0 0/20px 20px repeat-x, radial-gradient(circle at 10px 6px, #FFFFFF 0 2.6px, #D9BF94 3px 3.7px, transparent 4.2px) 0 0/20px 12px repeat-x;
     --disp:'Playfair Display', 'Noto Serif TC', serif;
-    --hard:3px 3px 0 #DCC08A; --hard-hover:5px 5px 0 #DCC08A;
+    --hard:3px 3px 0 #E3CFAE; --hard-hover:5px 5px 0 #E3CFAE;
     --amp:#B08A3E; --amp-shadow:none;
-    --ticket-on:#8C2E45; --ticket-on-shadow:4px 4px 0 var(--gold);
-    --progress:repeating-linear-gradient(-45deg,#B04A62 0 8px,#E7C98E 8px 16px);
-    --pill:#8C2E45;
+    --ticket-on:#7E2A3E; --ticket-on-shadow:4px 4px 0 #C9A45C;
+    --progress:repeating-linear-gradient(-45deg,#C97B84 0 8px,#E7C98E 8px 16px);
+    --pill:#7E2A3E;
+    --bullet:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 13C8 18 4 20 2 21' stroke='%238E9B7E' stroke-width='1.4' fill='none'/%3E%3Cellipse cx='6' cy='17' rx='3.2' ry='1.6' transform='rotate(-35 6 17)' fill='%239AA88E'/%3E%3Ccircle cx='9.5' cy='9' r='5' fill='%23E8B4B8'/%3E%3Ccircle cx='14.5' cy='9' r='5' fill='%23E8B4B8'/%3E%3Ccircle cx='12' cy='13' r='5' fill='%23D9959C'/%3E%3Ccircle cx='12' cy='10' r='3.6' fill='%23C97B84'/%3E%3Cpath d='M10.4 10.2a1.8 1.6 0 1 1 3 .8' stroke='%237E2A3E' stroke-width='1.1' fill='none'/%3E%3C/svg%3E");
   }
   /* 朋友宴：照簡報配色——奶油米底、奶茶色區塊、芥末黃＋珊瑚橘花朵、鼠尾草綠葉 */
   body.ev-0327{
@@ -49,6 +51,8 @@
     --ticket-on:#2E2824; --ticket-on-shadow:4px 4px 0 #EDB93F;
     --progress:repeating-linear-gradient(-45deg,#EDB93F 0 10px,#EC8A5E 10px 20px);
     --pill:#2E2824;
+    --edge-h:12px;
+    --bullet:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='%23EC8A5E'%3E%3Cellipse cx='12' cy='6' rx='3.4' ry='4.4'/%3E%3Cellipse cx='12' cy='6' rx='3.4' ry='4.4' transform='rotate(72 12 12)'/%3E%3Cellipse cx='12' cy='6' rx='3.4' ry='4.4' transform='rotate(144 12 12)'/%3E%3Cellipse cx='12' cy='6' rx='3.4' ry='4.4' transform='rotate(216 12 12)'/%3E%3Cellipse cx='12' cy='6' rx='3.4' ry='4.4' transform='rotate(288 12 12)'/%3E%3C/g%3E%3Ccircle cx='12' cy='12' r='2.6' fill='%23EDB93F'/%3E%3C/svg%3E");
   }
   *{box-sizing:border-box;}
   html{font-size:16px;}
@@ -71,8 +75,28 @@
   .pearls{height:14px; background:radial-gradient(circle at 50% 50%, #fff 0 4px, rgba(45,27,78,.18) 4.5px 5.5px, transparent 6px) 0 0/16px 14px repeat-x;}
 
   /* ---------- 色帶 hero：整塊跟著場次換色 ---------- */
-  header{position:relative; overflow:hidden; padding:36px 0 38px; background-color:var(--band); transition:background-color .5s ease;}
-  header::after{content:""; position:absolute; left:0; right:0; bottom:0; height:8px; background:var(--band-edge);}
+  header{position:relative; overflow:hidden; padding:72px 0 calc(var(--edge-h) + 30px); background-color:var(--band); transition:background-color .5s ease;}
+  header::after{content:""; position:absolute; left:0; right:0; bottom:0; height:var(--edge-h); background:var(--band-edge);}
+  /* 角落花藝：家宴＝玫瑰；朋友宴＝簡報的水彩小花 */
+  .sprays{position:absolute; inset:0; pointer-events:none; z-index:0;}
+  .spray{position:absolute; top:-6px; width:clamp(170px, 24vw, 300px); opacity:0; transition:opacity .6s ease; animation:sway 10s ease-in-out infinite;}
+  .spray svg{display:block; width:100%; height:auto;}
+  .spray.l{left:-6px; transform-origin:0 0;}
+  .spray.r{right:-6px; transform-origin:100% 0; animation-name:swayR;}
+  .spray.r svg{transform:scaleX(-1);}
+  body.ev-0306 .spray.s0306, body.ev-0327 .spray.s0327{opacity:1;}
+  @keyframes sway{0%,100%{transform:rotate(0);} 50%{transform:rotate(1.4deg);}}
+  @keyframes swayR{0%,100%{transform:rotate(0);} 50%{transform:rotate(-1.4deg);}}
+  @media (max-width:640px){ header{padding-top:84px;} .spray{width:150px;} }
+  .avatar{width:58px; height:58px; border-radius:50%; object-fit:cover; flex:none; background:var(--accent-soft);}
+  body.ev-0306 .avatar{box-shadow:0 0 0 2px #fff, 0 0 0 3.5px #C9A45C;}
+  body.ev-0327 .avatar{box-shadow:0 0 0 3px #fff, 0 0 0 5px #EC8A5E;}
+  .player-top{display:flex; align-items:center; gap:12px;}
+  .foot-sprig{display:flex; justify-content:center; margin-bottom:6px;}
+  .foot-sprig .fs{display:none; width:220px;}
+  .foot-sprig svg{display:block; width:100%; height:auto;}
+  body.ev-0306 .foot-sprig .s0306, body.ev-0327 .foot-sprig .s0327{display:block;}
+  body.ev-0327 .pearls{display:none;}
   header::before{content:""; position:absolute; inset:0; background-image:var(--band-pattern); background-size:26px 26px; pointer-events:none;}
   body.ev-0327 header::before{background-size:170px 130px; opacity:.85;}
   .floaters{position:absolute; inset:0; pointer-events:none; z-index:0;}
@@ -97,7 +121,7 @@
   .players{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:22px;}
   @media (max-width:520px){ .players{grid-template-columns:1fr;} }
   .player{background:var(--card); border:2px solid var(--ink); border-radius:16px; padding:14px 16px; box-shadow:var(--hard);}
-  .player .who{display:flex; align-items:baseline; gap:8px;}
+  .player .who{display:flex; align-items:baseline; gap:8px; flex-wrap:wrap;}
   .player .name{font-family:'Huninn','Noto Sans TC',sans-serif; font-size:1.35rem;}
   .player .role{font-size:.78rem; color:var(--ink-soft);}
   .chips{display:flex; flex-wrap:wrap; gap:6px; margin-top:8px;}
@@ -182,6 +206,7 @@
   .phase-block{margin-bottom:22px; background:var(--card); border:2px solid var(--ink); border-radius:16px; box-shadow:var(--hard); overflow:hidden;}
   .phase-head{display:flex; justify-content:space-between; align-items:center; gap:10px; padding:12px 20px; border-bottom:2px solid var(--ink); background:var(--accent-soft); flex-wrap:wrap; transition:background-color .5s ease;}
   .phase-title{font-family:'Huninn','Noto Sans TC',sans-serif; font-size:1.1rem;}
+  .phase-title::before, .section-head h2::before{content:""; display:inline-block; width:1.05em; height:1.05em; margin-right:.4em; vertical-align:-.12em; background:var(--bullet) center/contain no-repeat;}
   .phase-due{font-size:.78rem; color:var(--ink-soft); margin-left:8px;}
   .phase-count{font-family:var(--disp); font-size:1rem;}
   .phase-block.all-done .phase-head{background:var(--donebg);}
@@ -290,6 +315,26 @@
   .payment-badge.pending{color:var(--red);} .payment-badge.after{color:var(--ink-soft);}
   @media (max-width:560px){ .payment-card{grid-template-columns:22px 1fr;} .payment-amount-block{grid-column:2/3; text-align:left;} }
 
+  /* ---------- 賓客桌次 ---------- */
+  .seat-summary{background:var(--accent-soft); border:2px solid var(--ink); border-radius:16px; padding:14px 22px; margin-bottom:16px; display:flex; flex-wrap:wrap; gap:14px 34px; align-items:center;}
+  .seat-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:16px;}
+  .seat-card{background:var(--card); border:2px solid var(--ink); border-radius:14px; box-shadow:var(--hard); overflow:hidden; display:flex; flex-direction:column;}
+  body.ev-0306 .seat-card{border-width:1.5px; border-radius:10px;}
+  body.ev-0327 .seat-card{border-width:1.5px;}
+  .seat-head{display:flex; align-items:center; gap:8px; padding:8px 10px 8px 14px; background:var(--accent-soft); border-bottom:1.5px solid var(--ink);}
+  body.ev-0327 .seat-head{background:#E4D8C9;}
+  .seat-head .cell{font-weight:700; font-size:1rem; padding:2px 4px; flex:1;}
+  .seat-head .seat-side.cell{width:auto; flex:none; min-width:3em; text-align:center; font-weight:400;}
+  .seat-side{font-size:.72rem; border:1.5px solid var(--ink); border-radius:999px; padding:0 8px; white-space:nowrap; background:#fff;}
+  .seat-count{display:flex; align-items:baseline; gap:2px; font-size:.75rem; color:var(--ink-soft); white-space:nowrap;}
+  .seat-count .cell{font-family:var(--disp); font-size:1.25rem; color:var(--ink); width:auto; min-width:1.4em; text-align:right; padding:0 2px;}
+  .seat-body{padding:8px 10px 6px; flex:1;}
+  .seat-body .guests{font-size:.9rem; line-height:1.8;}
+  .seat-body .snote{font-size:.78rem; color:var(--ink-soft);}
+  .seat-foot{display:flex; justify-content:flex-end; padding:0 10px 8px;}
+  .seat-notice{background:var(--lemon-soft); border:1.5px dashed var(--ink); border-radius:12px; padding:10px 14px; font-size:.85rem; margin-bottom:14px;}
+  .seat-group-title{font-size:1rem; margin:18px 0 10px; color:var(--ink-soft);}
+
   /* ---------- 造型靈感 gallery ---------- */
   .gal-filters{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px;}
   .gal-filter{border:2px solid var(--ink); border-radius:999px; background:var(--card); padding:3px 14px; font-size:.85rem;}
@@ -300,6 +345,7 @@
   .gal-item:hover{transform:translate(-2px,-2px) rotate(-.6deg); box-shadow:var(--hard-hover);}
   .gal-item img{display:block; width:100%; height:auto; min-height:80px; background:var(--accent-soft);}
   .gal-cap{padding:8px 12px 10px; font-size:.85rem;}
+  .gal-cap .gnote{display:block; font-size:.74rem; color:var(--ink-soft); margin-top:2px;}
   .gal-cap .cat{font-size:.72rem; padding:0 8px; border-radius:999px; background:var(--lemon-soft); border:1.5px solid var(--ink); margin-right:6px;}
   .gal-broken{padding:24px 12px; font-size:.78rem; color:var(--red); background:var(--overdue); text-align:center;}
   .gal-empty{background:var(--card); border:2px dashed var(--ink); border-radius:16px; padding:22px 24px; font-size:.9rem;}
@@ -349,6 +395,7 @@
 <body class="ev-0306">
 
 <header>
+  <div class="sprays" id="sprays" aria-hidden="true"></div>
   <div class="floaters" id="floaters" aria-hidden="true"></div>
   <div class="wrap poster">
     <div>
@@ -358,11 +405,11 @@
 
       <div class="players">
         <div class="player groom">
-          <div class="who"><span class="name" id="pGroom">張裕煒</span><span class="role">新郎</span></div>
+          <div class="player-top"><img class="avatar" id="aGroom" alt="張裕煒"><div><div class="who"><span class="name" id="pGroom">張裕煒</span><span class="role">新郎</span></div></div></div>
           <div class="chips" id="cGroom"></div>
         </div>
         <div class="player bride">
-          <div class="who"><span class="name" id="pBride">劉惠婷</span><span class="role">新娘</span></div>
+          <div class="player-top"><img class="avatar" id="aBride" alt="劉惠婷"><div><div class="who"><span class="name" id="pBride">劉惠婷</span><span class="role">新娘</span></div></div></div>
           <div class="chips" id="cBride"></div>
         </div>
       </div>
@@ -386,6 +433,7 @@
     <button class="tab-btn active" data-tab="checklist">籌備檢核表</button>
     <button class="tab-btn" data-tab="itinerary">當天流程</button>
     <button class="tab-btn" data-tab="gallery">造型照片</button>
+    <button class="tab-btn" data-tab="seating">賓客桌次</button>
     <button class="tab-btn" data-tab="vendors">廠商聯繫</button>
     <button class="tab-btn" data-tab="payments">廠商尾款</button>
     <span class="ev-flag" id="evFlag"></span>
@@ -495,6 +543,28 @@
     </div>
   </section>
 
+  <section class="panel" id="panel-seating">
+    <div class="section-head">
+      <h2 id="seatTitle">賓客桌次</h2>
+      <p>依簡報整理的桌次與名單。點桌名、名單、人數或備註就能直接修改，會同步到試算表。這頁有賓客姓名，和尾款頁共用同一組通關密碼。</p>
+    </div>
+    <div class="payments-gate" id="seatGate">
+      <p class="payments-gate-text">這一頁有賓客名單，請輸入通關密碼。</p>
+      <div class="payments-gate-row">
+        <input type="password" id="seatPasscode" placeholder="通關密碼" aria-label="通關密碼">
+        <button class="btn-ink" id="seatUnlock">解鎖查看</button>
+      </div>
+      <p class="payments-gate-err" id="seatErr">密碼不正確，請再試一次，或向顧問確認密碼。</p>
+    </div>
+    <div class="payments-content" id="seatContent">
+      <div class="seat-notice" id="seatNotice" style="display:none;"></div>
+      <div class="seat-summary" id="seatSummary"></div>
+      <div id="seatGroups"></div>
+      <div class="add-row"><button class="btn-ink" id="addSeatBtn">＋ 新增一桌</button></div>
+      <p class="save-note">＊人數欄只填數字，上方的總人數會自動加總。名單裡沒寫人數的人，在備註註明「人數待確認」。</p>
+    </div>
+  </section>
+
   <section class="panel" id="panel-vendors">
     <div class="section-head">
       <h2 id="vendorTitle">廠商聯繫清單</h2>
@@ -552,7 +622,7 @@
 </main>
 
 <div class="pearls" aria-hidden="true"></div>
-<footer><span class="disp">See you at the party!</span>Just.in Wedding 佳時婚禮顧問工作室</footer>
+<footer><div class="foot-sprig" id="footSprig" aria-hidden="true"></div><span class="disp">See you at the party!</span>Just.in Wedding 佳時婚禮顧問工作室</footer>
 
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="照片放大檢視">
   <button class="lb-close" id="lbClose">關閉 ✕</button>
@@ -582,17 +652,63 @@ var CONFIG = {
   ],
   appsScriptUrl: 'https://script.google.com/macros/s/AKfycbyEAC-QMywfOMmxXxedAlmAChzggnHa6qA0Cw3yqQhWYEA1UKeIbkV1a2hvzXzZXCm8qg/exec',
   photoUrl: '',                 // 婚紗照網址，留空就不顯示
-  paymentsPasscode: 'party'     // 尾款頁通關密碼，不分大小寫（僅為輕量保護）
+  groomPhoto: 'images/groom.jpg',   // 新郎大頭照（放在 GitHub 的 images 資料夾）
+  bridePhoto: 'images/bride.jpg',   // 新娘大頭照
+  paymentsPasscode: 'party'     // 尾款頁與桌次頁的通關密碼，不分大小寫（僅為輕量保護）
 };
 
 var EVENTS = {
   '0306': {key:'0306', label:'家宴', date:'2027-03-06', venue:'台中市役所', venueUrl:'https://gowedding.tw/Store/%E5%8F%B0%E4%B8%AD%E5%B8%82%E5%BD%B9%E6%89%80/',
-           meal:'午宴', tables:'9 桌（女方 6・男方 4，含主桌）', style:'復古、古典／蕾絲、珍珠', dress:'拍照 vissi → 一進 Classic Jo → 二進 類旗袍 → 送客 vissi'},
+           meal:'午宴', tables:'9 桌（主桌 1・女方 5・男方 3）', style:'復古、古典／蕾絲、珍珠', dress:'拍照 vissi → 一進 Classic Jo → 二進 類旗袍 → 送客 vissi'},
   '0327': {key:'0327', label:'朋友宴', date:'2027-03-27', venue:'台中市役所', venueUrl:'https://gowedding.tw/Store/%E5%8F%B0%E4%B8%AD%E5%B8%82%E5%BD%B9%E6%89%80/',
-           meal:'午宴', tables:'8 桌（國小・國中・高中・大學・學生桌）', style:'復古／蕾絲、珍珠', dress:'一進 vissi → 二進＋送客 vissi'}
+           meal:'午宴', tables:'8 桌（惠婷同學 6・裕煒 2）', style:'復古／蕾絲、珍珠', dress:'一進 vissi → 二進＋送客 vissi'}
 };
 var EVENT_KEYS = ['0306','0327'];
-var GALLERY_CATS = ['婚紗','妝髮','花藝','佈置','喜帖小物','其他'];
+var GALLERY_CATS = ['婚紗','妝髮','婚紗照','喜帖小物','花藝','佈置','其他'];
+
+/* 造型照片預設清單（照片檔放在 GitHub 的 images 資料夾）；場次空白＝兩場共用 */
+var DEFAULT_GALLERY = [
+  ['0306','婚紗','戶外拍攝・vissi','images/0306-outdoor-vissi.jpg',''],
+  ['0306','婚紗','一進・Classic Jo','images/0306-entrance-classicjo.jpg',''],
+  ['0306','婚紗','送客・vissi','images/0306-sendoff-vissi.jpg','二進類旗袍的照片還沒放'],
+  ['0327','婚紗','一進・vissi','images/0327-entrance-vissi.jpg',''],
+  ['0327','婚紗','二進＋送客・vissi（選項 1）','images/0327-second-vissi-1.jpg',''],
+  ['0327','婚紗','二進＋送客・vissi（選項 2）','images/0327-second-vissi-2.jpg',''],
+  ['','妝髮','妝髮參考 1','images/makeup-1.jpg','不喜歡：超級高馬尾、大側分太厚重又梳太高'],
+  ['','妝髮','妝髮參考 2','images/makeup-2.jpg',''],
+  ['','妝髮','妝髮參考 3','images/makeup-3.jpg',''],
+  ['','妝髮','妝髮參考 4','images/makeup-4.jpg',''],
+  ['','喜帖小物','喜帖選項：紙本蕾絲','images/invite-lace.jpg','11/20 和芊澐見面討論'],
+  ['','喜帖小物','喜帖選項：水彩市役所','images/invite-watercolor.jpg','11/20 和芊澐見面討論'],
+  ['','婚紗照','11/13 婚紗照・vissi 魚尾','images/prewedding-vissi-mermaid.jpg',''],
+  ['','婚紗照','11/13 婚紗照・後生短洋裝','images/prewedding-short-dress.jpg',''],
+  ['','婚紗照','11/13 婚紗照・wade 復古','images/prewedding-wade.jpg','']
+];
+
+/* 賓客桌次（整理自簡報 0306／0327 桌數） */
+var DEFAULT_SEATING = {
+  '0306': [
+    {side:'兩家', table:'主桌', guests:'惠婷、爸媽 2、姨婆、育滌姑\n裕煒、爸媽 2、外婆', count:'9', note:''},
+    {side:'女方', table:'女方 1', guests:'叔 2、育燕姑 2、育銘叔 2、奕瑋 4', count:'10', note:''},
+    {side:'女方', table:'女方 2', guests:'奕臻 2、萱 2、哥姐、姐 4', count:'10', note:''},
+    {side:'女方', table:'女方 3', guests:'哥 4、小白 2、爸媽咪 2、姑媽姑丈、叔', count:'11', note:''},
+    {side:'女方', table:'女方 4', guests:'柏崧 4、荃夆 2、雅婷 4', count:'10', note:''},
+    {side:'女方', table:'女方 5', guests:'哲瑋 3、思儒 1、昱婷 1、明赫 2、昱臻 2', count:'9', note:''},
+    {side:'男方', table:'男方 1', guests:'大伯 2、堂哥 3、大堂姐 1、二堂姐 4、裕煒妹', count:'11', note:''},
+    {side:'男方', table:'男方 2', guests:'姑婆 2、女兒 1、兒子夫妻 3、姑姑 4', count:'10', note:''},
+    {side:'男方', table:'男方 3', guests:'叔公 2、長子夫妻 4、次子 1、女兒 1、舅舅 3', count:'11', note:''}
+  ],
+  '0327': [
+    {side:'惠婷', table:'國小', guests:'江峰 1、張獻州 1、心屏 1、子皓 1、旻汶 1、介誠 2、仁瑋 1、俊彥', count:'8', note:'俊彥人數待確認'},
+    {side:'惠婷', table:'國中', guests:'嬿姐 1、白瑄 1、雨均 1、麟鴻 2', count:'5', note:''},
+    {side:'惠婷', table:'高中', guests:'冠勳 1、建凱 1、沈 1、孟筑 1、蘇柏瑞 1、Jack 1、伯壎 2、peggy、教練 1', count:'9', note:'peggy 人數待確認'},
+    {side:'惠婷', table:'大學 1', guests:'呱 2、鱷魚 1、腸 1、77 1、郭運譽 1、智慧 2、牛 1、曹 1', count:'10', note:''},
+    {side:'惠婷', table:'大學 2', guests:'打 1、蓉 1、婉 1、瑋俐 1、桓 2、彤、妤婷 3', count:'9', note:'彤人數待確認'},
+    {side:'惠婷', table:'學生桌', guests:'優美、梨加、真琴', count:'', note:'人數待確認'},
+    {side:'裕煒', table:'裕煒 1', guests:'', count:'', note:'名單待補'},
+    {side:'裕煒', table:'裕煒 2', guests:'', count:'', note:'名單待補'}
+  ]
+};
 
 var DEFAULT_ITINERARY = {
   '0306': [
@@ -656,49 +772,48 @@ var DEFAULT_PAYMENTS = {
   ]
 };
 
-/* 檢核表：[場次, 階段, 分類, 項目, 說明]；場次空白＝兩場共用 */
+/* 檢核表：[場次, 日期, 分類, 項目, 說明]；場次空白＝兩場共用（整理自簡報「排程」頁） */
 var CHECKLIST_TEMPLATE = [
-  ['0306','2026/11/10 前（拍婚紗前）','出席名單','統計家宴人數','親友名單抓好，才能確認桌數。'],
-  ['0327','2026/11/10 前（拍婚紗前）','出席名單','統計朋友宴人數','依國小、國中、高中、大學分桌抓人數。'],
-  ['','2026/11/10 前（拍婚紗前）','婚紗照','確認 11/13 拍婚紗流程與三個地點','咖啡廳 → 紅帽象／廟東 → 環保公園，攝影 Zoe、新秘 Evonne。'],
-  ['','2026/11/10 前（拍婚紗前）','婚紗照','確認三套造型與新郎三套','vissi 魚尾、後生短洋裝、wade 復古。'],
-  ['','2026/11/10 前（拍婚紗前）','新秘','和 Evonne 溝通髮型','避開不喜歡的髮型：超級高馬尾、大側分太厚重又梳太高。'],
-  ['','2026/11/20 前','喜帖','和芊澐見面討論喜帖設計（11/20）','建築水彩畫風格，選項：水彩市役所／紙本蕾絲。'],
-  ['0306','2026/11/20 前','攝影','預訂攝影師瓦農的住宿','瓦農需要住宿，市役所附近先訂好。'],
-  ['','2026/12/31 前','喜餅','試吃並選定喜餅','候選：高雄中村文御手作、日出。網友說不用另外印謝卡，用喜餅送就好。'],
-  ['0306','2026/12/31 前','服裝','挑選主婚人服裝','媽媽裝、爸爸西裝。'],
-  ['','2026/12/31 前','保養','安排婚前保養','作臉、身體保養排程。'],
-  ['','2026/12/31 前','出席名單','發放婚禮表單給賓客','蒐集出席、素食、兒童座椅需求。'],
-  ['','2026/12/31 前','喜帖','選定喜帖樣式',''],
-  ['','2026/12/31 前','新秘','Evonne 試妝','試妝 5,000，只試妝不試髮：妝髮溝通、妝感嘗試、風格定位。'],
-  ['0306','2027/01/31 前','流程','和主持人瀚昱討論家宴流程',''],
-  ['0327','2027/01/31 前','流程','和主持人翔翔討論朋友宴流程與遊戲','國小／國中／高中／大學同學分組對抗、抽獎。'],
-  ['','2027/01/31 前','喜帖','印製喜帖',''],
-  ['','2027/01/31 前','小物','採購送客小禮物','候選：可愛香皂、漂亮蜂蜜、糖果罐、咖啡。'],
-  ['0327','2027/01/31 前','道具','採購遊戲道具與抽獎獎品',''],
-  ['0306','2027/01/31 前','新秘','確認幾位媽媽要妝髮','目前報價還沒含媽媽妝髮。'],
-  ['0327','2027/01/31 前','派對','預訂拍貼機',''],
-  ['0306','2027/01/31 前','素材','準備家宴影片與音樂','開場影片、成長照片、婚紗照輪播、各橋段音樂。'],
-  ['0327','2027/01/31 前','素材','準備朋友宴影片、音樂與遊戲畫面',''],
-  ['','2027/02/04 前（春節前）','喜帖','寄出喜帖','2/6 春節，連假前寄出，賓客才有時間安排 3 月行程。'],
-  ['0306','2027/02/04 前（春節前）','場地','確認家宴最終菜單','連假前先和市役所定案。'],
-  ['0306','2027/02/04 前（春節前）','工作人員','安排家宴當日工作人員名單',''],
-  ['0306','2027/02/04 前（春節前）','交通','預訂禮車',''],
-  ['0306','2027/02/04 前（春節前）','出席名單','確認家宴桌數並排座位表','女方 6 桌、男方 4 桌（含主桌）。'],
-  ['0327','2027/02/04 前（春節前）','場地','確認朋友宴最終菜單',''],
-  ['0327','2027/02/04 前（春節前）','工作人員','安排朋友宴當日工作人員名單',''],
-  ['0327','2027/02/04 前（春節前）','出席名單','確認朋友宴桌數並排座位表','國小、國中、高中、大學、學生桌。'],
-  ['0306','2027/03/03 前（家宴前）','場地','和主持人、市役所測試家宴影音',''],
-  ['0306','2027/03/03 前（家宴前）','廠商','確認家宴所有廠商細節與流程',''],
-  ['0306','2027/03/03 前（家宴前）','出席名單','敲定家宴最終人數與桌卡','含素食、兒童座椅。'],
-  ['0306','2027/03/03 前（家宴前）','廠商尾款','準備家宴尾款現金並分裝','參考「廠商尾款」頁。'],
-  ['','2027/03/03 前（家宴前）','保養','作臉、身體保養、飲食控管',''],
-  ['0306','2027/03/06 家宴當天','派對','和家人好好吃一頓','剩下的交給總召與團隊。'],
-  ['0327','2027/03/24 前（朋友宴前）','場地','和主持人測試朋友宴影音與遊戲畫面',''],
-  ['0327','2027/03/24 前（朋友宴前）','出席名單','敲定朋友宴最終人數與桌卡',''],
-  ['0327','2027/03/24 前（朋友宴前）','道具','遊戲道具、獎品、拍貼機到位',''],
-  ['0327','2027/03/24 前（朋友宴前）','廠商尾款','準備朋友宴尾款現金並分裝','參考「廠商尾款」頁。'],
-  ['0327','2027/03/27 朋友宴當天','派對','好好玩一場','剩下的交給總召與團隊。']
+  ['0306','2026-10-31','出席名單','統計家宴人數','主桌 1、女方 5 桌、男方 3 桌，共 9 桌。'],
+  ['0327','2026-10-31','出席名單','統計朋友宴人數','惠婷同學 6 桌、裕煒 2 桌，共 8 桌。'],
+  ['','2026-11-13','婚紗照','拍婚紗','攝影大好良晨、新秘 Evonne；咖啡廳 → 紅帽象／廟東 → 環保公園。'],
+  ['','2026-11-20','喜帖','和芊澐見面討論喜帖設計','選項：紙本蕾絲、水彩市役所。'],
+  ['0306','2026-11-30','攝影','預訂攝影師瓦農的住宿','瓦農需要住宿，市役所附近先訂好。'],
+  ['','2026-12-31','喜餅','試吃並選定喜餅','候選：高雄中村文御手作、日出。網友說不用另外印謝卡，用喜餅送就好。'],
+  ['0306','2026-12-31','服裝','挑選主婚人服裝','媽媽裝、爸爸西裝。'],
+  ['','2026-12-31','保養','安排婚前保養',''],
+  ['','2026-12-31','出席名單','發放婚禮表單','蒐集出席、素食、兒童座椅需求。'],
+  ['','2026-12-31','喜帖','選定喜帖樣式',''],
+  ['','2026-12-31','新秘','Evonne 試妝','$5,000 僅妝無試髮：妝髮溝通、妝感嘗試、風格定位。'],
+  ['0306','2027-01-31','流程','和主持人瀚昱討論家宴流程細節',''],
+  ['0327','2027-01-31','流程','和主持人翔翔第一次開會','討論流程與遊戲。'],
+  ['','2027-01-31','喜帖','印製喜帖',''],
+  ['','2027-01-31','小物','採購送客小禮物','候選：可愛香皂、漂亮蜂蜜、糖果罐、咖啡。'],
+  ['0327','2027-01-31','道具','採購遊戲道具與小禮物',''],
+  ['0327','2027-01-31','派對','預訂拍貼機',''],
+  ['0306','2027-01-31','新秘','確認幾位媽媽要妝髮','目前報價還沒含媽媽妝髮。'],
+  ['0306','2027-01-31','素材','準備家宴音樂與影片',''],
+  ['0327','2027-01-31','素材','準備朋友宴音樂、影片與遊戲畫面',''],
+  ['','2027-02-04','喜帖','寄出喜帖','2/6 春節，連假前寄出。'],
+  ['0306','2027-02-04','場地','確認家宴最終菜單',''],
+  ['0327','2027-02-04','場地','確認朋友宴最終菜單',''],
+  ['0306','2027-02-04','工作人員','安排家宴當日工作人員名單',''],
+  ['0327','2027-02-04','工作人員','安排朋友宴當日工作人員名單',''],
+  ['0306','2027-02-04','交通','預訂禮車',''],
+  ['0306','2027-02-04','出席名單','再次確認家宴桌數並排座位表','參考「賓客桌次」頁。'],
+  ['0327','2027-02-04','出席名單','再次確認朋友宴桌數並排座位表','裕煒的 2 桌名單待補。'],
+  ['','2027-03-01','保養','作臉、做身體、飲食控管',''],
+  ['0306','2027-03-01','場地','和主持人、市役所測試家宴影音',''],
+  ['0306','2027-03-01','廠商','確認家宴所有廠商與流程細節',''],
+  ['0306','2027-03-01','出席名單','敲定家宴最終人數','含素食、兒童座椅。'],
+  ['0306','2027-03-01','出席名單','確認家宴桌次與桌卡內容',''],
+  ['0306','2027-03-01','工作人員','確認家宴當日工作人員名單',''],
+  ['0306','2027-03-03','廠商尾款','準備家宴尾款現金並分裝','參考「廠商尾款」頁。'],
+  ['0327','2027-03-20','場地','和主持人、市役所測試朋友宴影音與遊戲畫面',''],
+  ['0327','2027-03-20','廠商','確認朋友宴所有廠商與流程細節',''],
+  ['0327','2027-03-20','出席名單','敲定朋友宴最終人數與桌卡',''],
+  ['0327','2027-03-20','工作人員','確認朋友宴當日工作人員名單',''],
+  ['0327','2027-03-24','廠商尾款','準備朋友宴尾款現金並分裝','參考「廠商尾款」頁。']
 ];
 
 (function(){
@@ -741,54 +856,141 @@ var CHECKLIST_TEMPLATE = [
       el.appendChild(d);
     });
   }
+  [['aGroom',CONFIG.groomPhoto],['aBride',CONFIG.bridePhoto]].forEach(function(p){
+    var im = document.getElementById(p[0]);
+    if(!p[1]){ im.remove(); return; }
+    im.addEventListener('error', function(){ im.remove(); });
+    im.src = p[1];
+  });
   if(CONFIG.photoUrl){
     var img = document.createElement('img');
     img.src = CONFIG.photoUrl; img.alt = CONFIG.groomFull + '與' + CONFIG.brideFull + '的婚紗照';
     document.getElementById('photoSlot').appendChild(img);
   }
 
-  // ---------- 飄浮元素：家宴＝珍珠、愛心、星星；朋友宴＝彩紙、氣球、彩帶 ----------
+  // ---------- 花藝：家宴＝復古玫瑰、珍珠；朋友宴＝簡報的水彩小花 ----------
+  var FLORA = (function(){
+    function f(n){ return (+n).toFixed(1); }
+    function rose(cx,cy,r,c1,c2,c3){
+      var g='';
+      for(var i=0;i<6;i++){ var a=i*60+15, rad=a*Math.PI/180;
+        g+='<ellipse cx="'+f(cx+Math.cos(rad)*r*.42)+'" cy="'+f(cy+Math.sin(rad)*r*.42)+'" rx="'+f(r*.56)+'" ry="'+f(r*.42)+'" transform="rotate('+a+' '+f(cx+Math.cos(rad)*r*.42)+' '+f(cy+Math.sin(rad)*r*.42)+')" fill="'+c1+'" opacity=".88"/>'; }
+      g+='<circle cx="'+f(cx)+'" cy="'+f(cy)+'" r="'+f(r*.6)+'" fill="'+c2+'"/>';
+      g+='<path d="M'+f(cx-r*.28)+' '+f(cy+r*.05)+'a'+f(r*.3)+' '+f(r*.26)+' 0 1 1 '+f(r*.48)+' '+f(r*.12)+'a'+f(r*.18)+' '+f(r*.15)+' 0 1 1 -'+f(r*.3)+' -'+f(r*.06)+'" stroke="'+c3+'" stroke-width="'+f(Math.max(1.2,r*.08))+'" fill="none" stroke-linecap="round"/>';
+      g+='<path d="M'+f(cx-r*.5)+' '+f(cy+r*.2)+'q'+f(r*.5)+' '+f(r*.4)+' '+f(r*1)+' 0" stroke="'+c3+'" stroke-width="'+f(Math.max(1,r*.05))+'" fill="none" opacity=".55"/>';
+      return g;
+    }
+    function bud(x,y,r,c,rot){ return '<g transform="rotate('+rot+' '+f(x)+' '+f(y)+')"><ellipse cx="'+f(x)+'" cy="'+f(y)+'" rx="'+f(r*.6)+'" ry="'+f(r)+'" fill="'+c+'"/><path d="M'+f(x-r*.6)+' '+f(y+r*.4)+'q'+f(r*.6)+' '+f(r*1.1)+' '+f(r*1.2)+' 0" fill="#9AA88E"/></g>'; }
+    function leaf(x,y,len,ang,col,vein){
+      return '<g transform="translate('+f(x)+' '+f(y)+') rotate('+ang+')"><path d="M0 0C'+f(len*.3)+' -'+f(len*.3)+' '+f(len*.72)+' -'+f(len*.28)+' '+f(len)+' 0C'+f(len*.72)+' '+f(len*.28)+' '+f(len*.3)+' '+f(len*.3)+' 0 0z" fill="'+col+'" opacity=".92"/><path d="M2 0H'+f(len*.85)+'" stroke="'+vein+'" stroke-width="1"/></g>';
+    }
+    function blossom(cx,cy,r,col,center){
+      var g='';
+      for(var i=0;i<5;i++){ var a=i*72-90, rad=a*Math.PI/180, px=cx+Math.cos(rad)*r*.5, py=cy+Math.sin(rad)*r*.5;
+        g+='<ellipse cx="'+f(px)+'" cy="'+f(py)+'" rx="'+f(r*.42)+'" ry="'+f(r*.55)+'" transform="rotate('+(a+90)+' '+f(px)+' '+f(py)+')" fill="'+col+'" opacity=".9"/>'; }
+      return g+'<circle cx="'+f(cx)+'" cy="'+f(cy)+'" r="'+f(r*.22)+'" fill="'+(center||'#B85E37')+'"/>';
+    }
+    function lily(cx,cy,r,col,rot){
+      var g='<g transform="rotate('+(rot||0)+' '+f(cx)+' '+f(cy)+')">';
+      for(var i=0;i<6;i++){ var a=i*60;
+        g+='<path d="M'+f(cx)+' '+f(cy)+'C'+f(cx-r*.22)+' '+f(cy-r*.4)+' '+f(cx-r*.12)+' '+f(cy-r*.85)+' '+f(cx)+' '+f(cy-r)+'C'+f(cx+r*.12)+' '+f(cy-r*.85)+' '+f(cx+r*.22)+' '+f(cy-r*.4)+' '+f(cx)+' '+f(cy)+'z" transform="rotate('+a+' '+f(cx)+' '+f(cy)+')" fill="'+col+'" opacity=".9"/>'; }
+      for(var j=0;j<3;j++){ var b=j*120+30, rad=b*Math.PI/180;
+        g+='<line x1="'+f(cx)+'" y1="'+f(cy)+'" x2="'+f(cx+Math.cos(rad)*r*.45)+'" y2="'+f(cy+Math.sin(rad)*r*.45)+'" stroke="#B85E37" stroke-width="1.2"/><circle cx="'+f(cx+Math.cos(rad)*r*.47)+'" cy="'+f(cy+Math.sin(rad)*r*.47)+'" r="1.6" fill="#B85E37"/>'; }
+      return g+'</g>';
+    }
+    function dots(pts,col){ return pts.map(function(p){ return '<circle cx="'+p[0]+'" cy="'+p[1]+'" r="'+(p[2]||2.2)+'" fill="'+col+'"/>'; }).join(''); }
+    function stem(d,col,w){ return '<path d="'+d+'" stroke="'+col+'" stroke-width="'+(w||1.8)+'" fill="none" stroke-linecap="round"/>'; }
+
+    // 家宴：沿著上緣與左緣的玫瑰花圈（L 形，不擋到文字）
+    function roseSpray(){
+      var L='#9AA88E', V='#7F8C70', S='#8E9B7E';
+      var g = stem('M-6 20C80 34 170 18 296 36',S) + stem('M20 -6C32 80 18 170 34 296',S) + stem('M60 30C110 60 150 52 200 70',S,1.4);
+      g += leaf(70,26,30,-20,L,V)+leaf(96,32,26,25,L,V)+leaf(150,24,30,-15,L,V)+leaf(176,30,24,30,L,V)+leaf(232,30,28,-12,L,V)+leaf(256,36,22,28,L,V);
+      g += leaf(24,74,30,95,L,V)+leaf(30,100,26,55,L,V)+leaf(22,154,30,100,L,V)+leaf(28,176,24,60,L,V)+leaf(26,230,26,95,L,V)+leaf(30,250,22,65,L,V);
+      g += leaf(150,56,22,10,L,V)+leaf(186,64,20,-25,L,V);
+      g += dots([[118,46,2.4],[124,40],[130,50],[214,46,2.4],[220,40],[46,124,2.4],[40,130],[52,204,2.4],[46,212],[270,48],[48,268]],'#D9BE84');
+      g += rose(32,30,40,'#EDC3C6','#D99AA2','#7E2A3E');
+      g += rose(128,30,19,'#F3D3D2','#E2A5A8','#A8475D') + rose(205,24,15,'#E8B4B8','#C97B84','#7E2A3E') + rose(204,72,12,'#F3D3D2','#E2A5A8','#A8475D');
+      g += rose(30,126,19,'#E8B4B8','#C97B84','#7E2A3E') + rose(24,206,15,'#F3D3D2','#E2A5A8','#A8475D');
+      g += bud(274,38,7,'#C97B84',80) + bud(38,276,7,'#C97B84',170) + bud(160,48,5.5,'#E2A5A8',60);
+      g += dots([[88,58,3],[96,62,2.4],[60,92,3],[64,100,2.4]],'#FFFFFF');
+      return '<svg viewBox="0 0 300 300">' + g + '</svg>';
+    }
+    // 朋友宴：簡報的芥末黃百合、珊瑚橘小花、鼠尾草綠葉
+    function wildSpray(){
+      var L='#A9B79F', V='#8C9A82', S='#9AA88E';
+      var g = stem('M-6 18C80 30 170 14 296 30',S,1.5) + stem('M18 -6C30 80 16 170 30 296',S,1.5) + stem('M50 24C100 50 120 80 150 110',S,1.3) + stem('M24 50C60 90 70 130 96 160',S,1.3);
+      g += leaf(70,22,28,-25,L,V)+leaf(92,28,22,30,L,V)+leaf(158,20,28,-18,L,V)+leaf(232,24,26,-10,L,V)+leaf(254,30,20,32,L,V)+leaf(110,62,22,40,L,V)+leaf(128,84,20,-10,L,V);
+      g += leaf(20,72,28,100,L,V)+leaf(26,96,22,58,L,V)+leaf(18,160,28,100,L,V)+leaf(24,232,24,95,L,V)+leaf(62,104,20,70,L,V)+leaf(76,128,20,20,L,V);
+      g += lily(30,28,34,'#EDB93F',12);
+      g += blossom(150,112,15,'#EC8A5E') + blossom(132,98,10,'#F2A27E') + blossom(96,162,13,'#EC8A5E') + blossom(84,148,8,'#F2A27E');
+      g += blossom(196,22,12,'#EC8A5E') + blossom(212,34,8,'#F2A27E') + blossom(284,30,9,'#E9A37F');
+      g += blossom(22,196,12,'#EC8A5E') + blossom(34,212,8,'#F2A27E') + blossom(30,284,9,'#E9A37F');
+      g += lily(120,26,15,'#F3C98A',40) + lily(26,120,15,'#F3C98A',-20);
+      g += dots([[170,44,2.6],[176,52,2],[44,170,2.6],[52,176,2],[246,46,2.4],[46,246,2.4]],'#EC8A5E');
+      return '<svg viewBox="0 0 300 300">' + g + '</svg>';
+    }
+    function sprig(kind){
+      var g;
+      if(kind === '0306'){
+        var L='#9AA88E', V='#7F8C70';
+        g = '<path d="M10 30C70 22 150 22 210 30" stroke="#8E9B7E" stroke-width="1.6" fill="none"/>' + leaf(40,27,24,-18,L,V)+leaf(60,27,20,22,L,V)+leaf(180,27,24,198,L,V)+leaf(160,27,20,158,L,V);
+        g += dots([[80,22],[86,30],[140,22],[134,30]],'#D9BE84') + rose(110,26,16,'#EDC3C6','#D99AA2','#7E2A3E') + rose(90,30,8,'#F3D3D2','#E2A5A8','#A8475D') + rose(130,30,8,'#F3D3D2','#E2A5A8','#A8475D');
+      }else{
+        var L2='#A9B79F', V2='#8C9A82';
+        g = '<path d="M10 30C70 22 150 22 210 30" stroke="#9AA88E" stroke-width="1.4" fill="none"/>' + leaf(40,27,24,-18,L2,V2)+leaf(60,27,20,22,L2,V2)+leaf(180,27,24,198,L2,V2)+leaf(160,27,20,158,L2,V2);
+        g += blossom(88,28,10,'#EC8A5E') + blossom(132,28,10,'#EC8A5E') + lily(110,26,16,'#EDB93F',0);
+      }
+      return '<svg viewBox="0 0 220 52">' + g + '</svg>';
+    }
+    function petal(c){ return '<svg viewBox="0 0 24 24"><path d="M12 2C19 7 19 16 12 22C5 16 5 7 12 2z" fill="'+c+'" opacity=".85"/><path d="M12 5C14 10 14 15 12 19" stroke="#fff" stroke-width=".8" fill="none" opacity=".6"/></svg>'; }
+    return {rose:rose, blossom:blossom, lily:lily, leaf:leaf, roseSpray:roseSpray, wildSpray:wildSpray, sprig:sprig, petal:petal};
+  })();
+
   (function(){
+    var sp = document.getElementById('sprays');
+    var r = FLORA.roseSpray(), w = FLORA.wildSpray();
+    sp.innerHTML = '<div class="spray l s0306">'+r+'</div><div class="spray r s0306">'+r+'</div><div class="spray l s0327">'+w+'</div><div class="spray r s0327">'+w+'</div>';
+    document.getElementById('footSprig').innerHTML = '<div class="fs s0306">'+FLORA.sprig('0306')+'</div><div class="fs s0327">'+FLORA.sprig('0327')+'</div>';
+
     var box = document.getElementById('floaters');
-    var heart = '<svg viewBox="0 0 24 22"><path d="M12 21s-9-5.6-9-12A5 5 0 0 1 12 6a5 5 0 0 1 9 3c0 6.4-9 12-9 12z" fill="none" stroke="#fff" stroke-width="1.6"/></svg>';
     var star = '<svg viewBox="0 0 24 24"><path d="M12 1c.8 5.6 2.4 7.6 11 11-8.6 3.4-10.2 5.4-11 11-.8-5.6-2.4-7.6-11-11 8.6-3.4 10.2-5.4 11-11z" fill="#C9A45C"/></svg>';
-    function balloon(c){ return '<svg viewBox="0 0 30 56"><ellipse cx="15" cy="14" rx="12" ry="14" fill="'+c+'" stroke="#2D1B4E" stroke-width="1.6"/><path d="M13 28h4l-2 3z" fill="#2D1B4E"/><path d="M15 31c-4 6 4 10 0 16s3 7 0 9" fill="none" stroke="#2D1B4E" stroke-width="1.2"/></svg>'; }
-    function squig(c){ return '<svg viewBox="0 0 60 16"><path d="M2 8c6-8 10 8 16 0s10 8 16 0 10 8 16 0 6 4 8 2" fill="none" stroke="'+c+'" stroke-width="3" stroke-linecap="round"/></svg>'; }
     var seed = 7;
     function rnd(){ seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
     function add(set, cls, html, sz, styleExtra){
       var s = document.createElement('span');
       s.className = 'fl ' + set + ' ' + cls;
-      s.style.left = (rnd()*96) + '%';
-      s.style.top = (rnd()*88) + '%';
+      s.style.left = (12 + rnd()*76) + '%';
+      s.style.top = (18 + rnd()*72) + '%';
       s.style.setProperty('--sz', sz + 'px');
       s.style.setProperty('--dur', (7 + rnd()*7).toFixed(1) + 's');
       s.style.setProperty('--delay', (-rnd()*10).toFixed(1) + 's');
       s.style.setProperty('--dx', ((rnd()-.5)*40).toFixed(0) + 'px');
       s.style.setProperty('--dy', (-10 - rnd()*26).toFixed(0) + 'px');
-      s.style.setProperty('--rot', ((rnd()-.5)*60).toFixed(0) + 'deg');
+      s.style.setProperty('--rot', ((rnd()-.5)*120).toFixed(0) + 'deg');
       if(styleExtra) for(var k in styleExtra) s.style[k] = styleExtra[k];
       if(html) s.innerHTML = html;
       box.appendChild(s);
     }
-    for(var i=0;i<10;i++) add('s0306','pearl','',8 + rnd()*14);
-    for(var j=0;j<4;j++) add('s0306','','' + heart, 16 + rnd()*12);
-    for(var k=0;k<6;k++) add('s0306','', star, 10 + rnd()*10);
-    function blossom(c){ var pet=''; for(var q=0;q<5;q++){ var an=q*72*Math.PI/180; pet += '<ellipse cx="'+(12+Math.cos(an)*5.5).toFixed(1)+'" cy="'+(12+Math.sin(an)*5.5).toFixed(1)+'" rx="4.6" ry="3.6" transform="rotate('+(q*72)+' '+(12+Math.cos(an)*5.5).toFixed(1)+' '+(12+Math.sin(an)*5.5).toFixed(1)+')" fill="'+c+'" opacity=".92"/>'; }
-      return '<svg viewBox="0 0 24 24">' + pet + '<circle cx="12" cy="12" r="2.4" fill="#B85E37"/></svg>'; }
-    var leaf = '<svg viewBox="0 0 30 14"><path d="M1 7C8-1 22-1 29 7 22 15 8 15 1 7z" fill="#A9B79F"/><path d="M3 7h24" stroke="#8C9A82" stroke-width="1"/></svg>';
+    // 家宴：玫瑰花瓣、珍珠、少許金色閃光
+    var petalCols = ['#E8B4B8','#F1CDC8','#C97B84','#E2A5A8'];
+    for(var i=0;i<10;i++) add('s0306','', FLORA.petal(petalCols[i%petalCols.length]), 12 + rnd()*10);
+    for(var j=0;j<8;j++) add('s0306','pearl','', 7 + rnd()*9);
+    for(var k=0;k<3;k++) add('s0306','', star, 9 + rnd()*7);
+    // 朋友宴：小花、葉子、圓點
     var petals = ['#EDB93F','#EC8A5E','#F3C98A','#E9A37F'];
-    for(var a2=0;a2<9;a2++) add('s0327','', blossom(petals[a2%petals.length]), 14 + rnd()*14);
-    for(var l2=0;l2<6;l2++) add('s0327','', leaf, 22 + rnd()*14);
-    var dots = ['#EDB93F','#EC8A5E','#A9B79F'];
-    for(var c2=0;c2<8;c2++) add('s0327','confetti','',7 + rnd()*6,{background:dots[c2%dots.length], borderRadius:'50%', height:'auto', aspectRatio:'1'});
+    for(var a2=0;a2<8;a2++) add('s0327','', '<svg viewBox="0 0 24 24">'+FLORA.blossom(12,12,11,petals[a2%petals.length])+'</svg>', 14 + rnd()*12);
+    var leafSvg = '<svg viewBox="0 0 30 14">'+FLORA.leaf(1,7,28,0,'#A9B79F','#8C9A82')+'</svg>';
+    for(var l2=0;l2<5;l2++) add('s0327','', leafSvg, 20 + rnd()*12);
+    var dotCols = ['#EDB93F','#EC8A5E','#A9B79F'];
+    for(var c2=0;c2<7;c2++) add('s0327','confetti','',7 + rnd()*6,{background:dotCols[c2%dotCols.length], borderRadius:'50%', height:'auto', aspectRatio:'1'});
   })();
 
   function confettiBurst(fromEl){
     if(reduceMotion) return;
     var r = fromEl.getBoundingClientRect();
     var cx = r.left + r.width/2, cy = r.top + r.height/2;
-    var cols = currentEvent === '0306' ? ['#C9A45C','#FFFFFF','#E7C98E','#B04A62','#F4D5DC'] : ['#EDB93F','#EC8A5E','#A9B79F','#F3C98A','#E4D8C9'];
+    var cols = currentEvent === '0306' ? ['#C9A45C','#FFFFFF','#E8B4B8','#C97B84','#F1CDC8'] : ['#EDB93F','#EC8A5E','#A9B79F','#F3C98A','#E4D8C9'];
     for(var i=0;i<34;i++){
       var p = document.createElement('span');
       p.className = 'burst';
@@ -835,7 +1037,7 @@ var CHECKLIST_TEMPLATE = [
     renderTickets(); renderMilestones(); applyEventLabels();
     renderChecklist(); updateProgress();
     renderItin(); renderPropsChecklist(); renderVendors(); renderGallery();
-    if(paymentsUnlocked) renderPayments();
+    if(paymentsUnlocked){ renderPayments(); renderSeating(); }
   }
 
   function applyEventLabels(){
@@ -845,6 +1047,7 @@ var CHECKLIST_TEMPLATE = [
     document.getElementById('galTitle').textContent = n + '・造型照片';
     document.getElementById('vendorTitle').textContent = n + '・廠商聯繫清單';
     document.getElementById('payTitle').textContent = n + '・廠商尾款確認';
+    document.getElementById('seatTitle').textContent = n + '・賓客桌次';
     document.getElementById('progressLabel').textContent = n + '・籌備進度';
     document.getElementById('printTitle').textContent = slashDate(e.date) + ' ' + namesLine + ' ' + e.label + '・當天流程';
     document.getElementById('printVenue').textContent = e.venue + ' ' + e.meal;
@@ -870,8 +1073,10 @@ var CHECKLIST_TEMPLATE = [
   var isConfigured = !!APPS_SCRIPT_URL && APPS_SCRIPT_URL.indexOf('PASTE_YOUR') !== 0;
   var syncStatusEl = document.getElementById('syncStatus');
   var syncBarEl = document.querySelector('.sync-bar');
-  var state = { Checklist: [], Itinerary: [], Vendors: [], Payments: [], Props: [], Gallery: [] };
+  var state = { Checklist: [], Itinerary: [], Vendors: [], Payments: [], Props: [], Gallery: [], Seating: [] };
   var loadedOnce = false, seedingNow = false;
+  var seatingReady = !isConfigured, galleryReady = !isConfigured;
+  if(!isConfigured) state.Seating = previewSeating();
 
   function setSyncStatus(text, isError){ syncStatusEl.textContent = text; syncBarEl.classList.toggle('error', !!isError); }
   function toBool(v){ return v === true || v === 'TRUE' || v === 'true' || v === 1 || v === '1'; }
@@ -890,7 +1095,7 @@ var CHECKLIST_TEMPLATE = [
   function renderAll(){
     renderChecklist(); updateProgress();
     renderItin(); renderPropsChecklist(); renderVendors(); renderGallery();
-    if(paymentsUnlocked) renderPayments();
+    if(paymentsUnlocked){ renderPayments(); renderSeating(); }
   }
 
   async function loadAll(silent){
@@ -912,6 +1117,9 @@ var CHECKLIST_TEMPLATE = [
       state.Payments = (data.Payments || []).map(normalizePaymentRow);
       state.Props = (data.Props || []).map(normalizePropRow);
       state.Gallery = (data.Gallery || []).map(normalizeGalleryRow);
+      galleryReady = Array.isArray(data.Gallery);
+      seatingReady = Array.isArray(data.Seating);
+      state.Seating = seatingReady ? data.Seating.map(normalizeSeatRow) : previewSeating();
       loadedOnce = true;
       renderAll();
       lastSyncTime = new Date().toLocaleString('zh-TW');
@@ -944,7 +1152,7 @@ var CHECKLIST_TEMPLATE = [
   // ---------- 自動帶入預設資料（試算表沒有該場資料時） ----------
   function checklistSeedRows(){
     return CHECKLIST_TEMPLATE.map(function(t, idx){
-      return {id:newId('c'), event:t[0], due:getPhaseDueDate(t[1]) || '', phase:t[1], category:t[2], text:t[3], done:'FALSE', desc:t[4], ref_link:'', file_link:'', order:idx+1};
+      return {id:newId('c'), event:t[0], due:t[1], phase:'', category:t[2], text:t[3], done:'FALSE', desc:t[4], ref_link:'', file_link:'', order:idx+1};
     });
   }
   function itinSeedRows(k, base){
@@ -963,6 +1171,17 @@ var CHECKLIST_TEMPLATE = [
         when: d.flag ? 'pending' : 'day', when_label: d.flag ? '金額待確認' : '當天付清', contact:'', note:d.note,
         flag: d.flag ? 'TRUE' : 'FALSE', confirmed:'FALSE', order:base+idx+1};
     });
+  }
+  function gallerySeedRows(){
+    return DEFAULT_GALLERY.map(function(g, idx){ return {id:newId('g'), event:g[0], category:g[1], title:g[2], url:g[3], note:g[4], order:idx+1}; });
+  }
+  function seatSeedRows(k, base){
+    return DEFAULT_SEATING[k].map(function(d, idx){ return {id:newId('s'), event:k, side:d.side, table:d.table, guests:d.guests, count:d.count, note:d.note, order:base+idx+1}; });
+  }
+  function previewSeating(){
+    var out = [];
+    EVENT_KEYS.forEach(function(k){ seatSeedRows(k, out.length).forEach(function(r){ out.push(normalizeSeatRow(r)); }); });
+    return out;
   }
   var NORMALIZE = {};
   var seedAttempted = {};
@@ -991,6 +1210,12 @@ var CHECKLIST_TEMPLATE = [
     if(seedingNow) return;
     var jobs = [];
     if(state.Checklist.length === 0 && !seedAttempted.Checklist) jobs.push(['Checklist','ALL', checklistSeedRows]);
+    if(galleryReady && state.Gallery.length === 0 && !seedAttempted.Gallery) jobs.push(['Gallery','ALL', gallerySeedRows]);
+    if(seatingReady && isConfigured){
+      EVENT_KEYS.forEach(function(k){
+        if(!seedAttempted['Seating' + k] && !state.Seating.some(function(r){ return r.event === k; })) jobs.push(['Seating', k, seatSeedRows]);
+      });
+    }
     EVENT_KEYS.forEach(function(k){
       [['Itinerary',itinSeedRows],['Vendors',vendorSeedRows],['Payments',paymentSeedRows]].forEach(function(p){
         var key = p[0] + k;
@@ -1048,7 +1273,8 @@ var CHECKLIST_TEMPLATE = [
   }
   function normalizePropRow(r){ return {id:toStr(r.id), event:eventCode(pick(r,['event','場次'])), name:toStr(r.name), done:toBool(r.done), order:toNum(r.order)}; }
   function normalizeGalleryRow(r){ return {id:toStr(r.id), event:eventCode(pick(r,['event','場次'])), category:toStr(r.category), title:toStr(r.title), url:toStr(r.url), note:toStr(r.note), order:toNum(r.order)}; }
-  NORMALIZE = {Checklist:normalizeChecklistRow, Itinerary:normalizeItinRow, Vendors:normalizeVendorRow, Payments:normalizePaymentRow, Props:normalizePropRow, Gallery:normalizeGalleryRow};
+  function normalizeSeatRow(r){ return {id:toStr(r.id), event:eventCode(pick(r,['event','場次'])), side:toStr(r.side), table:toStr(r.table), guests:toStr(r.guests), count:toStr(r.count), note:toStr(r.note), order:toNum(r.order)}; }
+  NORMALIZE = {Checklist:normalizeChecklistRow, Itinerary:normalizeItinRow, Vendors:normalizeVendorRow, Payments:normalizePaymentRow, Props:normalizePropRow, Gallery:normalizeGalleryRow, Seating:normalizeSeatRow};
 
   // ================= 檢核表（依場次） =================
   function getPhaseDueDate(phase){
@@ -1475,7 +1701,7 @@ var CHECKLIST_TEMPLATE = [
       });
       var cap = document.createElement('div');
       cap.className = 'gal-cap';
-      cap.innerHTML = (it.category ? '<span class="cat">' + esc(it.category) + '</span>' : '') + esc(it.title) + (!it.event ? ' <span class="shared-tag">兩場共用</span>' : '');
+      cap.innerHTML = (it.category ? '<span class="cat">' + esc(it.category) + '</span>' : '') + esc(it.title) + (!it.event ? ' <span class="shared-tag">兩場共用</span>' : '') + (it.note ? '<span class="gnote">' + esc(it.note) + '</span>' : '');
       b.appendChild(im); b.appendChild(cap);
       b.addEventListener('click', function(){ openLightbox(items, idx); });
       grid.appendChild(b);
@@ -1500,7 +1726,7 @@ var CHECKLIST_TEMPLATE = [
     var it = lbList[lbIndex];
     lbImg.src = imgSrc(it.url, true);
     lbImg.alt = it.title || it.category;
-    document.getElementById('lbCap').innerHTML = esc(it.title || '') + '<small>' + esc(it.category) + '・' + (lbIndex+1) + ' / ' + lbList.length + '</small>';
+    document.getElementById('lbCap').innerHTML = esc(it.title || '') + '<small>' + esc(it.category) + '・' + (lbIndex+1) + ' / ' + lbList.length + (it.note ? '・' + esc(it.note) : '') + '</small>';
     document.getElementById('lbOpen').href = it.url;
     var multi = lbList.length > 1;
     document.getElementById('lbPrev').style.display = multi ? '' : 'none';
@@ -1640,20 +1866,98 @@ var CHECKLIST_TEMPLATE = [
     });
   }
 
-  var passInput = document.getElementById('paymentsPasscode');
-  function tryUnlockPayments(){
-    if(passInput.value.trim().toLowerCase() === String(CONFIG.paymentsPasscode).toLowerCase()){
+  // ================= 賓客桌次 =================
+  function seatNum(v){ var m = String(v || '').match(/\d+/); return m ? parseInt(m[0], 10) : 0; }
+  function renderSeatSummary(){
+    var rows = forEvent(state.Seating);
+    var total = rows.reduce(function(s,r){ return s + seatNum(r.count); }, 0);
+    var sides = {}, order = [];
+    rows.forEach(function(r){ var k = r.side || '未分類'; if(!sides[k]){ sides[k] = {t:0, n:0}; order.push(k); } sides[k].t++; sides[k].n += seatNum(r.count); });
+    var pending = rows.filter(function(r){ return !String(r.count).trim() || /待/.test(r.note); }).length;
+    document.getElementById('seatSummary').innerHTML =
+      '<div><div class="ps-label">桌數</div><div class="ps-value">' + rows.length + ' 桌</div></div>' +
+      '<div><div class="ps-label">目前人數</div><div class="ps-value">' + total + ' 位</div></div>' +
+      order.map(function(k){ return '<div><div class="ps-label">' + esc(k) + '</div><div class="ps-value small">' + sides[k].t + ' 桌・' + sides[k].n + ' 位</div></div>'; }).join('') +
+      (pending ? '<div><div class="ps-label">待確認</div><div class="ps-value small">' + pending + ' 桌</div></div>' : '');
+  }
+  function renderSeating(){
+    var notice = document.getElementById('seatNotice');
+    if(isConfigured && loadedOnce && !seatingReady){
+      notice.style.display = 'block';
+      notice.textContent = '試算表還沒有「Seating」分頁，目前顯示的是簡報裡的名單，修改不會存檔。請把新版 Code.gs 貼進 Apps Script 並重新部署（版本選「新版本」），桌次就會自動寫進試算表。';
+    }else notice.style.display = 'none';
+    var editable = seatingReady;
+    var rows = forEvent(state.Seating).sort(function(a,b){ return a.order - b.order; });
+    renderSeatSummary();
+    var wrap = document.getElementById('seatGroups');
+    wrap.innerHTML = '';
+    if(rows.length === 0){
+      wrap.innerHTML = '<div class="seed-box">' + (loadedOnce ? '正在準備 ' + esc(evName()) + ' 的桌次…' : '正在讀取…') + '</div>';
+      return;
+    }
+    var groups = [], byKey = {};
+    rows.forEach(function(r){ var k = r.side || '其他'; if(!byKey[k]){ byKey[k] = []; groups.push(k); } byKey[k].push(r); });
+    groups.forEach(function(k){
+      var h = document.createElement('h3'); h.className = 'seat-group-title'; h.textContent = k + '（' + byKey[k].length + ' 桌）';
+      var grid = document.createElement('div'); grid.className = 'seat-grid';
+      byKey[k].forEach(function(row){
+        function cell(field, ph, ml){
+          var c = makeEditableCell(row, field, ph, 'Seating', {}, function(f){ if(f === 'count' || f === 'side' || f === 'note') renderSeatSummary(); if(f === 'side') renderSeating(); }, ml).firstChild;
+          if(!editable) c.contentEditable = 'false';
+          return c;
+        }
+        var card = document.createElement('div'); card.className = 'seat-card';
+        var head = document.createElement('div'); head.className = 'seat-head';
+        head.appendChild(cell('table','桌名'));
+        var side = cell('side','分類'); side.className += ' seat-side'; head.appendChild(side);
+        var cnt = document.createElement('div'); cnt.className = 'seat-count';
+        cnt.appendChild(cell('count','?')); cnt.appendChild(document.createTextNode('位'));
+        head.appendChild(cnt);
+        var body = document.createElement('div'); body.className = 'seat-body';
+        var g = cell('guests','名單…', true); g.classList.add('guests'); body.appendChild(g);
+        var n = cell('note','備註…', true); n.classList.add('snote'); body.appendChild(n);
+        card.appendChild(head); card.appendChild(body);
+        if(editable){
+          var foot = document.createElement('div'); foot.className = 'seat-foot';
+          var del = document.createElement('button'); del.className = 'row-del'; del.textContent = '刪除這桌';
+          del.addEventListener('click', function(){
+            if(!confirm('要刪除「' + row.table + '」嗎？')) return;
+            state.Seating = state.Seating.filter(function(i){ return i.id !== row.id; });
+            renderSeating();
+            postAction({action:'delete', sheet:'Seating', id:row.id});
+          });
+          foot.appendChild(del); card.appendChild(foot);
+        }
+        grid.appendChild(card);
+      });
+      wrap.appendChild(h); wrap.appendChild(grid);
+    });
+  }
+  document.getElementById('addSeatBtn').addEventListener('click', function(){
+    if(!seatingReady){ alert('試算表還沒有 Seating 分頁，請先更新 Apps Script。'); return; }
+    var row = {id:newId('s'), event:currentEvent, side:'', table:'新的一桌', guests:'', count:'', note:'', order:maxOrder(state.Seating)+1};
+    state.Seating.push(row);
+    renderSeating();
+    postAction({action:'add', sheet:'Seating', fields:{id:row.id, event:row.event, side:'', table:row.table, guests:'', count:'', note:'', order:row.order}});
+  });
+
+  // ---------- 通關密碼（尾款與桌次共用） ----------
+  function tryUnlock(inputId, errId){
+    var v = document.getElementById(inputId).value.trim().toLowerCase();
+    if(v === String(CONFIG.paymentsPasscode).toLowerCase()){
       paymentsUnlocked = true;
-      renderPayments();
-      document.getElementById('paymentsGate').style.display = 'none';
-      document.getElementById('paymentsContent').classList.add('open');
-      document.getElementById('paymentsErr').style.display = 'none';
+      ['paymentsGate','seatGate'].forEach(function(id){ document.getElementById(id).style.display = 'none'; });
+      ['paymentsContent','seatContent'].forEach(function(id){ document.getElementById(id).classList.add('open'); });
+      ['paymentsErr','seatErr'].forEach(function(id){ document.getElementById(id).style.display = 'none'; });
+      renderPayments(); renderSeating();
     }else{
-      document.getElementById('paymentsErr').style.display = 'block';
+      document.getElementById(errId).style.display = 'block';
     }
   }
-  document.getElementById('paymentsUnlock').addEventListener('click', tryUnlockPayments);
-  passInput.addEventListener('keydown', function(e){ if(e.key === 'Enter') tryUnlockPayments(); });
+  [['paymentsPasscode','paymentsUnlock','paymentsErr'],['seatPasscode','seatUnlock','seatErr']].forEach(function(g){
+    document.getElementById(g[1]).addEventListener('click', function(){ tryUnlock(g[0], g[2]); });
+    document.getElementById(g[0]).addEventListener('keydown', function(e){ if(e.key === 'Enter') tryUnlock(g[0], g[2]); });
+  });
 
   // ---------- 啟動 ----------
   document.body.className = 'ev-' + currentEvent;
