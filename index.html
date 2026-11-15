@@ -351,6 +351,8 @@
   .pay-opts{display:flex; flex-wrap:wrap; gap:4px; justify-content:flex-end; margin-top:6px;}
   .pay-opt{font-size:.72rem; padding:1px 10px; border-radius:999px; border:1.5px solid var(--line); background:#fff; color:var(--ink-soft);}
   .pay-opt[aria-pressed="true"]{border-color:var(--ink); background:var(--ink); color:#fff;}
+  .pay-opt[aria-pressed="false"]{text-decoration:line-through; text-decoration-thickness:1.5px; color:#8A7A84; border-color:#CDBFC6; border-style:dashed; background:#FAF6F7;}
+  .pay-opt[aria-pressed="false"]:hover{opacity:1; color:var(--ink); text-decoration:none;}
   .pay-opt:disabled{cursor:default;}
   @media (max-width:560px){ .pay-opts{justify-content:flex-start;} }
   /* 造型照片：待補照片的空位 */
@@ -1978,6 +1980,7 @@ var PAY_METHODS = [['cash','現金'],['credit card','信用卡'],['LINE','行動
       PAY_METHODS.forEach(function(m){
         var bt = document.createElement('button'); bt.type = 'button'; bt.className = 'pay-opt'; bt.textContent = m[1];
         bt.setAttribute('aria-pressed', chosen.indexOf(m[0]) > -1 ? 'true' : 'false');
+        bt.title = chosen.indexOf(m[0]) > -1 ? '已選：' + m[1] + '（點一下取消）' : '沒有用' + m[1] + '（點一下改成要用）';
         bt.addEventListener('click', function(){
           var cur = parseMethods(p), i = cur.indexOf(m[0]);
           if(i > -1) cur.splice(i, 1); else cur.push(m[0]);
