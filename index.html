@@ -317,23 +317,51 @@
 
   /* ---------- 賓客桌次 ---------- */
   .seat-summary{background:var(--accent-soft); border:2px solid var(--ink); border-radius:16px; padding:14px 22px; margin-bottom:16px; display:flex; flex-wrap:wrap; gap:14px 34px; align-items:center;}
-  .seat-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:16px;}
-  .seat-card{background:var(--card); border:2px solid var(--ink); border-radius:14px; box-shadow:var(--hard); overflow:hidden; display:flex; flex-direction:column;}
+  .seat-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:18px; align-items:start;}
+  .seat-card{background:var(--card); border:2px solid var(--ink); border-radius:14px; box-shadow:var(--hard); overflow:hidden;}
   body.ev-0306 .seat-card{border-width:1.5px; border-radius:10px;}
   body.ev-0327 .seat-card{border-width:1.5px;}
-  .seat-head{display:flex; align-items:center; gap:8px; padding:8px 10px 8px 14px; background:var(--accent-soft); border-bottom:1.5px solid var(--ink);}
-  body.ev-0327 .seat-head{background:#E4D8C9;}
-  .seat-head .cell{font-weight:700; font-size:1rem; padding:2px 4px; flex:1;}
-  .seat-head .seat-side.cell{width:auto; flex:none; min-width:3em; text-align:center; font-weight:400;}
-  .seat-side{font-size:.72rem; border:1.5px solid var(--ink); border-radius:999px; padding:0 8px; white-space:nowrap; background:#fff;}
-  .seat-count{display:flex; align-items:baseline; gap:2px; font-size:.75rem; color:var(--ink-soft); white-space:nowrap;}
-  .seat-count .cell{font-family:var(--disp); font-size:1.25rem; color:var(--ink); width:auto; min-width:1.4em; text-align:right; padding:0 2px;}
-  .seat-body{padding:8px 10px 6px; flex:1;}
-  .seat-body .guests{font-size:.9rem; line-height:1.8;}
-  .seat-body .snote{font-size:.78rem; color:var(--ink-soft);}
-  .seat-foot{display:flex; justify-content:flex-end; padding:0 10px 8px;}
+  .seat-top{display:flex; align-items:center; justify-content:space-between; gap:8px; padding:8px 12px; background:var(--accent-soft);}
+  body.ev-0327 .seat-top{background:#E4D8C9;}
+  .seat-top .seat-side.cell{width:auto; min-width:3.2em; text-align:center; font-size:.74rem; border:1.5px solid var(--ink); border-radius:999px; padding:0 10px; background:#fff;}
+  .seat-badge{font-size:.78rem; color:var(--ink-soft); white-space:nowrap;}
+  table.seat-table{width:100%; border-collapse:collapse; table-layout:fixed; font-size:.9rem;}
+  .seat-table th{font-size:.76rem; font-weight:700; color:var(--ink-soft); padding:6px 8px; border-bottom:1.5px solid var(--ink); text-align:left;}
+  .seat-table th.tname{width:auto;}
+  .seat-table th.tname .cell{font-size:1rem; color:var(--ink); padding:2px 4px;}
+  .seat-table th.num, .seat-table td.num{width:58px; text-align:center;}
+  .seat-table th.act, .seat-table td.act{width:30px; text-align:center;}
+  .seat-table td{padding:1px 6px; border-top:1px dashed var(--line);}
+  .seat-table td .cell{padding:5px 4px; font-size:.9rem; min-height:1.5em;}
+  .seat-table td.num .cell{text-align:center; font-variant-numeric:tabular-nums;}
+  .seat-table tr.pending td{background:var(--lemon-soft);}
+  .seat-table tfoot td{border-top:1.5px solid var(--ink); font-weight:700; padding:7px 8px; background:var(--bg);}
+  .seat-table tfoot td.num{font-family:var(--disp); font-size:1.05rem;}
+  .seat-empty{color:var(--ink-soft); font-size:.82rem; padding:10px 8px !important;}
+  .seat-x{border:none; background:none; color:var(--ink-soft); font-size:1rem; line-height:1; padding:4px;}
+  .seat-x:hover{color:var(--red);}
+  .seat-body{padding:8px 12px 4px;}
+  .seat-addguest{border:1.5px dashed var(--ink-soft); background:none; border-radius:999px; padding:2px 12px; font-size:.8rem; color:var(--ink-soft);}
+  .seat-addguest:hover{border-color:var(--accent-deep); color:var(--accent-deep);}
+  .seat-body .snote{font-size:.8rem; color:var(--ink-soft); margin-top:6px;}
+  .seat-foot{display:flex; justify-content:flex-end; padding:0 12px 8px;}
   .seat-notice{background:var(--lemon-soft); border:1.5px dashed var(--ink); border-radius:12px; padding:10px 14px; font-size:.85rem; margin-bottom:14px;}
   .seat-group-title{font-size:1rem; margin:18px 0 10px; color:var(--ink-soft);}
+  /* 付款方式（可複選） */
+  .pay-opts{display:flex; flex-wrap:wrap; gap:4px; justify-content:flex-end; margin-top:6px;}
+  .pay-opt{font-size:.72rem; padding:1px 10px; border-radius:999px; border:1.5px solid var(--line); background:#fff; color:var(--ink-soft);}
+  .pay-opt[aria-pressed="true"]{border-color:var(--ink); background:var(--ink); color:#fff;}
+  .pay-opt:disabled{cursor:default;}
+  @media (max-width:560px){ .pay-opts{justify-content:flex-start;} }
+  /* 造型照片：待補照片的空位 */
+  .gal-item.placeholder{cursor:pointer;}
+  .gal-ph{position:absolute; inset:10px; border:2px dashed var(--accent); border-radius:10px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; text-align:center; color:var(--accent-deep); background:rgba(255,255,255,.55); padding:10px;}
+  .gal-ph b{font-size:1rem;}
+  .gal-ph small{font-size:.74rem; color:var(--ink-soft);}
+  /* 當天流程：場地照片 */
+  .venue-strip{flex-basis:100%; display:flex; gap:8px; flex-wrap:wrap; align-items:center;}
+  .venue-strip button{padding:0; border:1.5px solid var(--ink); border-radius:8px; overflow:hidden; width:110px; aspect-ratio:3/2; background:var(--card); cursor:zoom-in;}
+  .venue-strip img{width:100%; height:100%; object-fit:cover; display:block;}
 
   /* ---------- 造型靈感 gallery ---------- */
   .gal-filters{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px;}
@@ -572,7 +600,7 @@
       <div class="seat-summary" id="seatSummary"></div>
       <div id="seatGroups"></div>
       <div class="add-row"><button class="btn-ink" id="addSeatBtn">＋ 新增一桌</button></div>
-      <p class="save-note">＊人數欄只填數字，上方的總人數會自動加總。名單裡沒寫人數的人，在備註註明「人數待確認」。</p>
+      <p class="save-note">＊人數、素食、嬰兒椅只填數字，每桌的「合計」和上方總數會自動加總。人數空白的列會標成黃色，代表還沒確認。</p>
     </div>
   </section>
 
@@ -665,7 +693,7 @@ var CONFIG = {
   photoUrl: '',                 // 婚紗照網址，留空就不顯示
   groomPhoto: 'images/groom.jpg',   // 新郎大頭照（放在 GitHub 的 images 資料夾）
   bridePhoto: 'images/bride.jpg',   // 新娘大頭照
-  paymentsPasscode: 'party'     // 尾款頁與桌次頁的通關密碼，不分大小寫（僅為輕量保護）
+  paymentsPasscode: 'HuiTing'   // 尾款頁與桌次頁的通關密碼，不分大小寫（僅為輕量保護）
 };
 
 var EVENTS = {
@@ -675,13 +703,14 @@ var EVENTS = {
            meal:'午宴', tables:'8 桌（惠婷同學 6・裕煒 2）', style:'復古／蕾絲、珍珠', dress:'一進 vissi → 二進＋送客 vissi'}
 };
 var EVENT_KEYS = ['0306','0327'];
-var GALLERY_CATS = ['婚紗','妝髮','婚紗照','喜帖小物','花藝','佈置','其他'];
+var GALLERY_CATS = ['婚紗','妝髮','婚紗照','場地','喜帖小物','花藝','佈置','其他'];
 
 /* 造型照片預設清單（照片檔放在 GitHub 的 images 資料夾）；場次空白＝兩場共用 */
 var DEFAULT_GALLERY = [
   ['0306','婚紗','戶外拍攝・vissi','images/0306-outdoor-vissi.jpg',''],
   ['0306','婚紗','一進・Classic Jo','images/0306-entrance-classicjo.jpg',''],
-  ['0306','婚紗','送客・vissi','images/0306-sendoff-vissi.jpg','二進類旗袍的照片還沒放'],
+  ['0306','婚紗','二進・類旗袍','','照片待補・10,500'],
+  ['0306','婚紗','送客・vissi','images/0306-sendoff-vissi.jpg',''],
   ['0327','婚紗','一進・vissi','images/0327-entrance-vissi.jpg',''],
   ['0327','婚紗','二進＋送客・vissi（選項 1）','images/0327-second-vissi-1.jpg',''],
   ['0327','婚紗','二進＋送客・vissi（選項 2）','images/0327-second-vissi-2.jpg',''],
@@ -693,31 +722,35 @@ var DEFAULT_GALLERY = [
   ['','喜帖小物','喜帖選項：水彩市役所','images/invite-watercolor.jpg','11/20 和芊澐見面討論'],
   ['','婚紗照','11/13 婚紗照・vissi 魚尾','images/prewedding-vissi-mermaid.jpg',''],
   ['','婚紗照','11/13 婚紗照・後生短洋裝','images/prewedding-short-dress.jpg',''],
-  ['','婚紗照','11/13 婚紗照・wade 復古','images/prewedding-wade.jpg','']
+  ['','婚紗照','11/13 婚紗照・wade 復古','images/prewedding-wade.jpg',''],
+  ['','場地','台中市役所・婚宴場地 1','https://img.gowedding.tw/wp-content/uploads/2024/11/2024111805171391.jpg',''],
+  ['','場地','台中市役所・婚宴場地 2','https://img.gowedding.tw/wp-content/uploads/2024/11/2024111805171697.jpg',''],
+  ['','場地','台中市役所・婚宴場地 3','https://img.gowedding.tw/wp-content/uploads/2024/11/2024111805172160.jpg',''],
+  ['','場地','台中市役所・婚宴場地 4','https://img.gowedding.tw/wp-content/uploads/2024/11/2024111805161944.jpg','']
 ];
 
-/* 賓客桌次（整理自簡報 0306／0327 桌數） */
+/* 賓客桌次（整理自簡報 0306／0327 桌數）：每桌一列，每位／每組賓客一列 */
 var DEFAULT_SEATING = {
   '0306': [
-    {side:'兩家', table:'主桌', guests:'惠婷、爸媽 2、姨婆、育滌姑\n裕煒、爸媽 2、外婆', count:'9', note:''},
-    {side:'女方', table:'女方 1', guests:'叔 2、育燕姑 2、育銘叔 2、奕瑋 4', count:'10', note:''},
-    {side:'女方', table:'女方 2', guests:'奕臻 2、萱 2、哥姐、姐 4', count:'10', note:''},
-    {side:'女方', table:'女方 3', guests:'哥 4、小白 2、爸媽咪 2、姑媽姑丈、叔', count:'11', note:''},
-    {side:'女方', table:'女方 4', guests:'柏崧 4、荃夆 2、雅婷 4', count:'10', note:''},
-    {side:'女方', table:'女方 5', guests:'哲瑋 3、思儒 1、昱婷 1、明赫 2、昱臻 2', count:'9', note:''},
-    {side:'男方', table:'男方 1', guests:'大伯 2、堂哥 3、大堂姐 1、二堂姐 4、裕煒妹', count:'11', note:''},
-    {side:'男方', table:'男方 2', guests:'姑婆 2、女兒 1、兒子夫妻 3、姑姑 4', count:'10', note:''},
-    {side:'男方', table:'男方 3', guests:'叔公 2、長子夫妻 4、次子 1、女兒 1、舅舅 3', count:'11', note:''}
+    {side:'兩家', table:'主桌', note:'', guests:[['惠婷',1],['惠婷爸媽',2],['姨婆',1],['育滌姑',1],['裕煒',1],['裕煒爸媽',2],['外婆',1]]},
+    {side:'女方', table:'女方 1', note:'', guests:[['叔',2],['育燕姑',2],['育銘叔',2],['奕瑋',4]]},
+    {side:'女方', table:'女方 2', note:'', guests:[['奕臻',2],['萱',2],['哥姐',2],['姐',4]]},
+    {side:'女方', table:'女方 3', note:'', guests:[['哥',4],['小白',2],['爸媽咪',2],['姑媽姑丈',2],['叔',1]]},
+    {side:'女方', table:'女方 4', note:'', guests:[['柏崧',4],['荃夆',2],['雅婷',4]]},
+    {side:'女方', table:'女方 5', note:'', guests:[['哲瑋',3],['思儒',1],['昱婷',1],['明赫',2],['昱臻',2]]},
+    {side:'男方', table:'男方 1', note:'', guests:[['大伯',2],['堂哥',3],['大堂姐',1],['二堂姐',4],['裕煒妹',1]]},
+    {side:'男方', table:'男方 2', note:'', guests:[['姑婆',2],['女兒',1],['兒子夫妻',3],['姑姑',4]]},
+    {side:'男方', table:'男方 3', note:'', guests:[['叔公',2],['長子夫妻',4],['次子',1],['女兒',1],['舅舅',3]]}
   ],
   '0327': [
-    {side:'惠婷', table:'國小', guests:'江峰 1、張獻州 1、心屏 1、子皓 1、旻汶 1、介誠 2、仁瑋 1、俊彥', count:'8', note:'俊彥人數待確認'},
-    {side:'惠婷', table:'國中', guests:'嬿姐 1、白瑄 1、雨均 1、麟鴻 2', count:'5', note:''},
-    {side:'惠婷', table:'高中', guests:'冠勳 1、建凱 1、沈 1、孟筑 1、蘇柏瑞 1、Jack 1、伯壎 2、peggy、教練 1', count:'9', note:'peggy 人數待確認'},
-    {side:'惠婷', table:'大學 1', guests:'呱 2、鱷魚 1、腸 1、77 1、郭運譽 1、智慧 2、牛 1、曹 1', count:'10', note:''},
-    {side:'惠婷', table:'大學 2', guests:'打 1、蓉 1、婉 1、瑋俐 1、桓 2、彤、妤婷 3', count:'9', note:'彤人數待確認'},
-    {side:'惠婷', table:'學生桌', guests:'優美、梨加、真琴', count:'', note:'人數待確認'},
-    {side:'裕煒', table:'裕煒 1', guests:'', count:'', note:'名單待補'},
-    {side:'裕煒', table:'裕煒 2', guests:'', count:'', note:'名單待補'}
+    {side:'惠婷', table:'國小', note:'俊彥人數待確認', guests:[['江峰',1],['張獻州',1],['心屏',1],['子皓',1],['旻汶',1],['介誠',2],['仁瑋',1],['俊彥','']]},
+    {side:'惠婷', table:'國中', note:'', guests:[['嬿姐',1],['白瑄',1],['雨均',1],['麟鴻',2]]},
+    {side:'惠婷', table:'高中', note:'peggy 人數待確認', guests:[['冠勳',1],['建凱',1],['沈',1],['孟筑',1],['蘇柏瑞',1],['Jack',1],['伯壎',2],['peggy',''],['教練',1]]},
+    {side:'惠婷', table:'大學 1', note:'', guests:[['呱',2],['鱷魚',1],['腸',1],['77',1],['郭運譽',1],['智慧',2],['牛',1],['曹',1]]},
+    {side:'惠婷', table:'大學 2', note:'彤人數待確認', guests:[['打',1],['蓉',1],['婉',1],['瑋俐',1],['桓',2],['彤',''],['妤婷',3]]},
+    {side:'惠婷', table:'學生桌', note:'人數待確認', guests:[['優美',''],['梨加',''],['真琴','']]},
+    {side:'裕煒', table:'裕煒 1', note:'名單待補', guests:[]},
+    {side:'裕煒', table:'裕煒 2', note:'名單待補', guests:[]}
   ]
 };
 
@@ -826,6 +859,9 @@ var CHECKLIST_TEMPLATE = [
   ['0327','2027-03-20','工作人員','確認朋友宴當日工作人員名單',''],
   ['0327','2027-03-24','廠商尾款','準備朋友宴尾款現金並分裝','參考「廠商尾款」頁。']
 ];
+
+/* 付款方式：可複選；pay_method 存英文、pay_label 存對應中文，用「 / 」分隔 */
+var PAY_METHODS = [['cash','現金'],['credit card','信用卡'],['LINE','行動支付']];
 
 (function(){
   function pad(n){ return String(n).padStart(2,'0'); }
@@ -1066,7 +1102,9 @@ var CHECKLIST_TEMPLATE = [
       '<div><span class="k">場地</span><a href="' + esc(e.venueUrl) + '" target="_blank" rel="noopener">' + esc(e.venue) + '</a>・' + esc(e.meal) + '</div>' +
       '<div><span class="k">桌數</span>' + esc(e.tables) + '</div>' +
       '<div><span class="k">風格元素</span>' + esc(e.style) + '</div>' +
-      '<div><span class="k">新娘換裝</span>' + esc(e.dress) + '</div>';
+      '<div><span class="k">新娘換裝</span>' + esc(e.dress) + '</div>' +
+      '<div class="venue-strip" id="venueStrip"></div>';
+    if(typeof renderVenueStrip === 'function') renderVenueStrip();
     document.getElementById('evFlag').textContent = '正在看：' + n;
   }
 
@@ -1187,11 +1225,19 @@ var CHECKLIST_TEMPLATE = [
     return DEFAULT_GALLERY.map(function(g, idx){ return {id:newId('g'), event:g[0], category:g[1], title:g[2], url:g[3], note:g[4], order:idx+1}; });
   }
   function seatSeedRows(k, base){
-    return DEFAULT_SEATING[k].map(function(d, idx){ return {id:newId('s'), event:k, side:d.side, table:d.table, guests:d.guests, count:d.count, note:d.note, order:base+idx+1}; });
+    var out = [], o = base;
+    DEFAULT_SEATING[k].forEach(function(t){
+      var tid = newId('s'); o++;
+      out.push({id:tid, kind:'table', event:k, side:t.side, table:t.table, table_id:'', name:'', count:'', veg:'', baby:'', note:t.note, order:o});
+      t.guests.forEach(function(g, i){
+        out.push({id:newId('sg'), kind:'guest', event:k, side:t.side, table:t.table, table_id:tid, name:g[0], count:String(g[1]), veg:'', baby:'', note:'', order:i+1});
+      });
+    });
+    return out;
   }
   function previewSeating(){
     var out = [];
-    EVENT_KEYS.forEach(function(k){ seatSeedRows(k, out.length).forEach(function(r){ out.push(normalizeSeatRow(r)); }); });
+    EVENT_KEYS.forEach(function(k){ seatSeedRows(k, 100 * (EVENT_KEYS.indexOf(k) + 1)).forEach(function(r){ out.push(normalizeSeatRow(r)); }); });
     return out;
   }
   var NORMALIZE = {};
@@ -1224,7 +1270,7 @@ var CHECKLIST_TEMPLATE = [
     if(galleryReady && state.Gallery.length === 0 && !seedAttempted.Gallery) jobs.push(['Gallery','ALL', gallerySeedRows]);
     if(seatingReady && isConfigured){
       EVENT_KEYS.forEach(function(k){
-        if(!seedAttempted['Seating' + k] && !state.Seating.some(function(r){ return r.event === k; })) jobs.push(['Seating', k, seatSeedRows]);
+        if(!seedAttempted['Seating' + k] && !state.Seating.some(function(r){ return r.event === k; })) jobs.push(['Seating', k, function(ev){ return seatSeedRows(ev, maxOrder(state.Seating.filter(function(r){ return r.kind !== 'guest'; }))); }]);
       });
     }
     EVENT_KEYS.forEach(function(k){
@@ -1284,7 +1330,7 @@ var CHECKLIST_TEMPLATE = [
   }
   function normalizePropRow(r){ return {id:toStr(r.id), event:eventCode(pick(r,['event','場次'])), name:toStr(r.name), done:toBool(r.done), order:toNum(r.order)}; }
   function normalizeGalleryRow(r){ return {id:toStr(r.id), event:eventCode(pick(r,['event','場次'])), category:toStr(r.category), title:toStr(r.title), url:toStr(r.url), note:toStr(r.note), order:toNum(r.order)}; }
-  function normalizeSeatRow(r){ return {id:toStr(r.id), event:eventCode(pick(r,['event','場次'])), side:toStr(r.side), table:toStr(r.table), guests:toStr(r.guests), count:toStr(r.count), note:toStr(r.note), order:toNum(r.order)}; }
+  function normalizeSeatRow(r){ return {id:toStr(r.id), event:eventCode(pick(r,['event','場次'])), kind:toStr(r.kind) === 'guest' ? 'guest' : 'table', side:toStr(r.side), table:toStr(r.table), table_id:toStr(r.table_id), name:toStr(r.name), count:toStr(r.count), veg:toStr(r.veg), baby:toStr(r.baby), guests:toStr(r.guests), note:toStr(r.note), order:toNum(r.order)}; }
   NORMALIZE = {Checklist:normalizeChecklistRow, Itinerary:normalizeItinRow, Vendors:normalizeVendorRow, Payments:normalizePaymentRow, Props:normalizePropRow, Gallery:normalizeGalleryRow, Seating:normalizeSeatRow};
 
   // ================= 檢核表（依場次） =================
@@ -1699,10 +1745,30 @@ var CHECKLIST_TEMPLATE = [
       return;
     }
     grid.className = 'gal-grid';
-    items.forEach(function(it, idx){
+    var viewable = items.filter(function(i){ return String(i.url).trim(); });
+    items.forEach(function(it){
       var b = document.createElement('button');
       b.className = 'gal-item'; b.type = 'button';
       var thumb = document.createElement('div'); thumb.className = 'gal-thumb';
+      if(!String(it.url).trim()){
+        b.classList.add('placeholder');
+        thumb.innerHTML = '<div class="gal-ph"><b>照片待補</b><small>點這裡貼上照片連結</small></div>';
+        var capP = document.createElement('div'); capP.className = 'gal-cap';
+        capP.innerHTML = '<div class="gtitle">' + (it.category ? '<span class="cat">' + esc(it.category) + '</span>' : '') + '<span class="t">' + esc(it.title) + '</span></div>' + (it.note ? '<span class="gnote">' + esc(it.note) + '</span>' : '');
+        b.appendChild(thumb); b.appendChild(capP);
+        b.setAttribute('aria-label', '補上照片：' + (it.title || it.category));
+        b.addEventListener('click', function(){
+          var u = prompt('貼上「' + (it.title || '這張') + '」的照片連結（雲端硬碟分享連結、圖片網址，或 images/檔名.jpg）');
+          if(!u || !u.trim()) return;
+          it.url = u.trim();
+          if(/待補/.test(it.note)){ it.note = it.note.replace(/照片待補[・、，, ]*/,'').trim(); }
+          postAction({action:'update', sheet:'Gallery', id:it.id, fields:{url:it.url, note:it.note}});
+          renderGallery();
+        });
+        grid.appendChild(b);
+        return;
+      }
+      var idx = viewable.indexOf(it);
       var im = document.createElement('img');
       im.loading = 'lazy'; im.alt = it.title || it.category; im.src = imgSrc(it.url, false);
       im.addEventListener('error', function(){
@@ -1721,8 +1787,23 @@ var CHECKLIST_TEMPLATE = [
         (it.note ? '<span class="gnote" title="' + esc(it.note) + '">' + esc(it.note) + '</span>' : '');
       b.setAttribute('aria-label', '放大檢視：' + (it.title || it.category));
       b.appendChild(thumb); b.appendChild(cap);
-      b.addEventListener('click', function(){ openLightbox(items, idx); });
+      b.addEventListener('click', function(){ openLightbox(viewable, idx); });
       grid.appendChild(b);
+    });
+    renderVenueStrip();
+  }
+  function renderVenueStrip(){
+    var el = document.getElementById('venueStrip'); if(!el) return;
+    var v = galleryItems().filter(function(i){ return i.category === '場地' && String(i.url).trim(); });
+    el.innerHTML = '';
+    if(!v.length){ el.style.display = 'none'; return; }
+    el.style.display = '';
+    var k = document.createElement('span'); k.className = 'k'; k.style.flexBasis = '100%'; k.textContent = '場地照片（點一下放大）'; el.appendChild(k);
+    v.forEach(function(it, i){
+      var b = document.createElement('button'); b.type = 'button'; b.setAttribute('aria-label', '放大檢視：' + it.title);
+      var im = document.createElement('img'); im.loading = 'lazy'; im.alt = it.title; im.src = imgSrc(it.url, false);
+      b.appendChild(im); b.addEventListener('click', function(){ openLightbox(v, i); });
+      el.appendChild(b);
     });
   }
 
@@ -1841,6 +1922,21 @@ var CHECKLIST_TEMPLATE = [
 
   // ================= 廠商尾款 =================
   var paymentsUnlocked = false;
+  function parseMethods(p){
+    var out = [];
+    function addKey(k){ if(k && out.indexOf(k) === -1) out.push(k); }
+    String(p.pay_method || '').split(/[\/,、]+/).forEach(function(t){
+      t = t.trim().toLowerCase();
+      if(t === 'cash') addKey('cash');
+      else if(t === 'card' || t === 'credit card' || t === 'credit' || t === 'creditcard') addKey('credit card');
+      else if(t === 'line' || t === 'line pay' || t === 'linepay') addKey('LINE');
+    });
+    if(!out.length) String(p.pay_label || '').split(/[\/,、]+/).forEach(function(t){
+      t = t.trim();
+      if(t === '現金') addKey('cash'); else if(t === '信用卡' || t === '刷卡') addKey('credit card'); else if(t === '行動支付' || /line/i.test(t)) addKey('LINE');
+    });
+    return out;
+  }
   function parseAmount(v){ var n = parseFloat((v||'').toString().replace(/[^0-9.]/g,'')); return isNaN(n) ? null : n; }
 
   function renderPayments(){
@@ -1874,89 +1970,197 @@ var CHECKLIST_TEMPLATE = [
       var right = document.createElement('div');
       right.className = 'payment-amount-block';
       var amt = parseAmount(p.amount);
-      var payCls = p.pay_method === 'card' ? 'card' : 'cash';
       var whenCls = p.when === 'pending' ? 'pending' : (p.when === 'after' ? 'after' : 'cash');
       right.innerHTML = '<div class="payment-amount">' + (amt !== null && p.amount ? 'NT$ ' + amt.toLocaleString('en-US') : '－') + '</div><div>' +
-        (p.pay_label ? '<span class="payment-badge ' + payCls + '">' + esc(p.pay_label) + '</span>' : '') +
         (p.when_label ? '<span class="payment-badge ' + whenCls + '">' + esc(p.when_label) + '</span>' : '') + '</div>';
+      var opts = document.createElement('div'); opts.className = 'pay-opts'; opts.setAttribute('aria-label', '付款方式（可複選）');
+      var chosen = parseMethods(p);
+      PAY_METHODS.forEach(function(m){
+        var bt = document.createElement('button'); bt.type = 'button'; bt.className = 'pay-opt'; bt.textContent = m[1];
+        bt.setAttribute('aria-pressed', chosen.indexOf(m[0]) > -1 ? 'true' : 'false');
+        bt.addEventListener('click', function(){
+          var cur = parseMethods(p), i = cur.indexOf(m[0]);
+          if(i > -1) cur.splice(i, 1); else cur.push(m[0]);
+          cur = PAY_METHODS.map(function(x){ return x[0]; }).filter(function(k){ return cur.indexOf(k) > -1; });
+          p.pay_method = cur.join(' / ');
+          p.pay_label = cur.map(function(k){ return PAY_METHODS.filter(function(x){ return x[0] === k; })[0][1]; }).join(' / ');
+          postAction({action:'update', sheet:'Payments', id:p.id, fields:{pay_method:p.pay_method, pay_label:p.pay_label}});
+          renderPayments();
+        });
+        opts.appendChild(bt);
+      });
+      right.appendChild(opts);
       card.appendChild(cb); card.appendChild(mid); card.appendChild(right);
       list.appendChild(card);
     });
   }
 
-  // ================= 賓客桌次 =================
-  function seatNum(v){ var m = String(v || '').match(/\d+/); return m ? parseInt(m[0], 10) : 0; }
+  // ================= 賓客桌次（每桌一張表：賓客／人數／素食／嬰兒椅，自動加總） =================
+  function seatNum(v){ var m = String(v == null ? '' : v).match(/\d+/); return m ? parseInt(m[0], 10) : 0; }
+  function byOrder(a, b){ return a.order - b.order; }
+  function seatTables(){ return forEvent(state.Seating).filter(function(r){ return r.kind !== 'guest'; }).sort(byOrder); }
+  function seatGuests(tid){ return state.Seating.filter(function(r){ return r.kind === 'guest' && r.table_id === tid; }).sort(byOrder); }
+  function tableTotals(tid){
+    var g = seatGuests(tid);
+    return {
+      n: g.reduce(function(s, r){ return s + seatNum(r.count); }, 0),
+      veg: g.reduce(function(s, r){ return s + seatNum(r.veg); }, 0),
+      baby: g.reduce(function(s, r){ return s + seatNum(r.baby); }, 0),
+      pending: g.filter(function(r){ return !String(r.count).trim(); }).length
+    };
+  }
   function renderSeatSummary(){
-    var rows = forEvent(state.Seating);
-    var total = rows.reduce(function(s,r){ return s + seatNum(r.count); }, 0);
-    var sides = {}, order = [];
-    rows.forEach(function(r){ var k = r.side || '未分類'; if(!sides[k]){ sides[k] = {t:0, n:0}; order.push(k); } sides[k].t++; sides[k].n += seatNum(r.count); });
-    var pending = rows.filter(function(r){ return !String(r.count).trim() || /待/.test(r.note); }).length;
+    var tables = seatTables();
+    var t = {n:0, veg:0, baby:0, pending:0}, sides = {}, order = [];
+    tables.forEach(function(tb){
+      var x = tableTotals(tb.id);
+      t.n += x.n; t.veg += x.veg; t.baby += x.baby; t.pending += x.pending;
+      var k = tb.side || '未分類';
+      if(!sides[k]){ sides[k] = {t:0, n:0}; order.push(k); }
+      sides[k].t++; sides[k].n += x.n;
+    });
     document.getElementById('seatSummary').innerHTML =
-      '<div><div class="ps-label">桌數</div><div class="ps-value">' + rows.length + ' 桌</div></div>' +
-      '<div><div class="ps-label">目前人數</div><div class="ps-value">' + total + ' 位</div></div>' +
+      '<div><div class="ps-label">桌數</div><div class="ps-value">' + tables.length + ' 桌</div></div>' +
+      '<div><div class="ps-label">人數</div><div class="ps-value">' + t.n + ' 位</div></div>' +
+      '<div><div class="ps-label">素食</div><div class="ps-value small">' + t.veg + ' 位</div></div>' +
+      '<div><div class="ps-label">嬰兒椅</div><div class="ps-value small">' + t.baby + ' 張</div></div>' +
       order.map(function(k){ return '<div><div class="ps-label">' + esc(k) + '</div><div class="ps-value small">' + sides[k].t + ' 桌・' + sides[k].n + ' 位</div></div>'; }).join('') +
-      (pending ? '<div><div class="ps-label">待確認</div><div class="ps-value small">' + pending + ' 桌</div></div>' : '');
+      (t.pending ? '<div><div class="ps-label">人數待填</div><div class="ps-value small">' + t.pending + ' 筆</div></div>' : '');
+  }
+  var seatCardRefs = {};
+  function refreshTable(tid){
+    var ref = seatCardRefs[tid]; if(!ref) return;
+    var x = tableTotals(tid);
+    ref.n.textContent = x.n; ref.veg.textContent = x.veg; ref.baby.textContent = x.baby;
+    ref.badge.textContent = '合計 ' + x.n + ' 位' + (x.pending ? '・' + x.pending + ' 筆待填' : '');
+    renderSeatSummary();
   }
   function renderSeating(){
     var notice = document.getElementById('seatNotice');
     if(isConfigured && loadedOnce && !seatingReady){
       notice.style.display = 'block';
-      notice.textContent = '試算表還沒有「Seating」分頁，目前顯示的是簡報裡的名單，修改不會存檔。請把新版 Code.gs 貼進 Apps Script 並重新部署（版本選「新版本」），桌次就會自動寫進試算表。';
+      notice.textContent = '試算表還沒有「Seating」分頁，目前顯示的是簡報裡的名單，修改不會存檔。請把新版 Code.gs 貼進 Apps Script 並重新部署（版本選「新版本」）。';
     }else notice.style.display = 'none';
     var editable = seatingReady;
-    var rows = forEvent(state.Seating).sort(function(a,b){ return a.order - b.order; });
+    var tables = seatTables();
     renderSeatSummary();
+    seatCardRefs = {};
     var wrap = document.getElementById('seatGroups');
     wrap.innerHTML = '';
-    if(rows.length === 0){
+    if(tables.length === 0){
       wrap.innerHTML = '<div class="seed-box">' + (loadedOnce ? '正在準備 ' + esc(evName()) + ' 的桌次…' : '正在讀取…') + '</div>';
       return;
     }
+    function cell(row, field, ph, onCh, ml){
+      var c = makeEditableCell(row, field, ph, 'Seating', {}, onCh, ml).firstChild;
+      if(!editable) c.contentEditable = 'false';
+      return c;
+    }
     var groups = [], byKey = {};
-    rows.forEach(function(r){ var k = r.side || '其他'; if(!byKey[k]){ byKey[k] = []; groups.push(k); } byKey[k].push(r); });
+    tables.forEach(function(r){ var k = r.side || '其他'; if(!byKey[k]){ byKey[k] = []; groups.push(k); } byKey[k].push(r); });
     groups.forEach(function(k){
       var h = document.createElement('h3'); h.className = 'seat-group-title'; h.textContent = k + '（' + byKey[k].length + ' 桌）';
       var grid = document.createElement('div'); grid.className = 'seat-grid';
-      byKey[k].forEach(function(row){
-        function cell(field, ph, ml){
-          var c = makeEditableCell(row, field, ph, 'Seating', {}, function(f){ if(f === 'count' || f === 'side' || f === 'note') renderSeatSummary(); if(f === 'side') renderSeating(); }, ml).firstChild;
-          if(!editable) c.contentEditable = 'false';
-          return c;
-        }
+      byKey[k].forEach(function(tb){
         var card = document.createElement('div'); card.className = 'seat-card';
-        var head = document.createElement('div'); head.className = 'seat-head';
-        head.appendChild(cell('table','桌名'));
-        var side = cell('side','分類'); side.className += ' seat-side'; head.appendChild(side);
-        var cnt = document.createElement('div'); cnt.className = 'seat-count';
-        cnt.appendChild(cell('count','?')); cnt.appendChild(document.createTextNode('位'));
-        head.appendChild(cnt);
+        var top = document.createElement('div'); top.className = 'seat-top';
+        var side = cell(tb, 'side', '分類', function(){ renderSeating(); }); side.classList.add('seat-side'); top.appendChild(side);
+        var badge = document.createElement('span'); badge.className = 'seat-badge'; top.appendChild(badge);
+        card.appendChild(top);
+
+        var table = document.createElement('table'); table.className = 'seat-table';
+        var thead = document.createElement('thead'); var hr = document.createElement('tr');
+        var thName = document.createElement('th'); thName.className = 'tname';
+        thName.appendChild(cell(tb, 'table', '桌名', function(){ guestsOf.forEach(function(g){ if(g.table !== tb.table){ g.table = tb.table; postAction({action:'update', sheet:'Seating', id:g.id, fields:{table:tb.table}}); } }); }));
+        hr.appendChild(thName);
+        ['人數','素食','嬰兒椅',''].forEach(function(t){ var th = document.createElement('th'); th.textContent = t; th.className = t ? 'num' : 'act'; hr.appendChild(th); });
+        thead.appendChild(hr); table.appendChild(thead);
+
+        var tbody = document.createElement('tbody');
+        var guestsOf = seatGuests(tb.id);
+        function numCell(g, f){
+          var td = document.createElement('td'); td.className = 'num';
+          var c = cell(g, f, f === 'count' ? '?' : '', function(field, val, el){
+            var n = String(val).replace(/[^\d]/g, '');
+            if(n !== val){ g[field] = n; el.textContent = n; postAction({action:'update', sheet:'Seating', id:g.id, fields:(function(){ var o = {}; o[field] = n; return o; })()}); }
+            refreshTable(tb.id);
+          });
+          c.setAttribute('inputmode', 'numeric');
+          td.appendChild(c); return td;
+        }
+        guestsOf.forEach(function(g){
+          var tr = document.createElement('tr');
+          if(!String(g.count).trim()) tr.className = 'pending';
+          var tdN = document.createElement('td'); tdN.appendChild(cell(g, 'name', '姓名')); tr.appendChild(tdN);
+          tr.appendChild(numCell(g, 'count')); tr.appendChild(numCell(g, 'veg')); tr.appendChild(numCell(g, 'baby'));
+          var tdA = document.createElement('td'); tdA.className = 'act';
+          if(editable){
+            var x = document.createElement('button'); x.className = 'seat-x'; x.type = 'button'; x.textContent = '×'; x.setAttribute('aria-label', '刪除 ' + (g.name || '這一列'));
+            x.addEventListener('click', function(){
+              if(!confirm('要刪除「' + (g.name || '這一列') + '」嗎？')) return;
+              state.Seating = state.Seating.filter(function(r){ return r.id !== g.id; });
+              postAction({action:'delete', sheet:'Seating', id:g.id});
+              renderSeating();
+            });
+            tdA.appendChild(x);
+          }
+          tr.appendChild(tdA);
+          tbody.appendChild(tr);
+        });
+        if(!guestsOf.length){
+          var er = document.createElement('tr'); er.innerHTML = '<td colspan="5" class="seat-empty">' + (tb.guests ? '舊名單：' + esc(tb.guests) : '還沒有名單，按下方「新增賓客」') + '</td>';
+          tbody.appendChild(er);
+        }
+        table.appendChild(tbody);
+        var tfoot = document.createElement('tfoot'); var fr = document.createElement('tr');
+        var fl = document.createElement('td'); fl.textContent = '合計'; fr.appendChild(fl);
+        var fN = document.createElement('td'), fV = document.createElement('td'), fB = document.createElement('td');
+        [fN, fV, fB].forEach(function(td){ td.className = 'num'; fr.appendChild(td); });
+        fr.appendChild(document.createElement('td'));
+        tfoot.appendChild(fr); table.appendChild(tfoot);
+        card.appendChild(table);
+        seatCardRefs[tb.id] = {n:fN, veg:fV, baby:fB, badge:badge};
+
         var body = document.createElement('div'); body.className = 'seat-body';
-        var g = cell('guests','名單…', true); g.classList.add('guests'); body.appendChild(g);
-        var n = cell('note','備註…', true); n.classList.add('snote'); body.appendChild(n);
-        card.appendChild(head); card.appendChild(body);
+        if(editable){
+          var add = document.createElement('button'); add.type = 'button'; add.className = 'seat-addguest'; add.textContent = '＋ 新增賓客';
+          add.addEventListener('click', function(){
+            var g = {id:newId('sg'), kind:'guest', event:tb.event, side:tb.side, table:tb.table, table_id:tb.id, name:'', count:'1', veg:'', baby:'', note:'', guests:'', order:maxOrder(guestsOf) + 1};
+            state.Seating.push(g);
+            postAction({action:'add', sheet:'Seating', fields:{id:g.id, kind:'guest', event:g.event, side:g.side, table:g.table, table_id:g.table_id, name:'', count:'1', veg:'', baby:'', note:'', order:g.order}});
+            renderSeating();
+            var el = document.querySelector('[data-guest="' + g.id + '"]'); if(el) el.focus();
+          });
+          body.appendChild(add);
+        }
+        var n = cell(tb, 'note', '備註…', null, true); n.classList.add('snote'); body.appendChild(n);
+        card.appendChild(body);
         if(editable){
           var foot = document.createElement('div'); foot.className = 'seat-foot';
           var del = document.createElement('button'); del.className = 'row-del'; del.textContent = '刪除這桌';
           del.addEventListener('click', function(){
-            if(!confirm('要刪除「' + row.table + '」嗎？')) return;
-            state.Seating = state.Seating.filter(function(i){ return i.id !== row.id; });
+            if(!confirm('要刪除「' + tb.table + '」和這桌的 ' + guestsOf.length + ' 筆賓客嗎？')) return;
+            var ids = [tb.id].concat(guestsOf.map(function(g){ return g.id; }));
+            state.Seating = state.Seating.filter(function(r){ return ids.indexOf(r.id) === -1; });
+            ids.forEach(function(id){ postAction({action:'delete', sheet:'Seating', id:id}); });
             renderSeating();
-            postAction({action:'delete', sheet:'Seating', id:row.id});
           });
           foot.appendChild(del); card.appendChild(foot);
         }
         grid.appendChild(card);
+        // 新增賓客後讓姓名欄可直接輸入
+        guestsOf.forEach(function(g, i){ var c = tbody.rows[i] && tbody.rows[i].querySelector('.cell'); if(c) c.setAttribute('data-guest', g.id); });
+        refreshTable(tb.id);
       });
       wrap.appendChild(h); wrap.appendChild(grid);
     });
   }
   document.getElementById('addSeatBtn').addEventListener('click', function(){
     if(!seatingReady){ alert('試算表還沒有 Seating 分頁，請先更新 Apps Script。'); return; }
-    var row = {id:newId('s'), event:currentEvent, side:'', table:'新的一桌', guests:'', count:'', note:'', order:maxOrder(state.Seating)+1};
+    var row = {id:newId('s'), kind:'table', event:currentEvent, side:'', table:'新的一桌', table_id:'', name:'', count:'', veg:'', baby:'', note:'', guests:'', order:maxOrder(seatTables()) + 1};
     state.Seating.push(row);
     renderSeating();
-    postAction({action:'add', sheet:'Seating', fields:{id:row.id, event:row.event, side:'', table:row.table, guests:'', count:'', note:'', order:row.order}});
+    postAction({action:'add', sheet:'Seating', fields:{id:row.id, kind:'table', event:row.event, side:'', table:row.table, note:'', order:row.order}});
   });
 
   // ---------- 通關密碼（尾款與桌次共用） ----------
