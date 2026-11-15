@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>婚禮派對手帖</title>
+<title>世界浪漫婚禮規劃</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Playfair+Display:ital,wght@1,700;1,800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -564,7 +564,7 @@
   <section class="panel" id="panel-gallery">
     <div class="section-head">
       <h2 id="galTitle">造型照片</h2>
-      <p>禮服、妝髮、花藝、佈置的參考照片都放這裡，點照片可以放大，左右切換。</p>
+      <p>禮服、妝髮、場地、花藝、佈置的參考照片都放這裡，點照片可以放大，左右切換。</p>
     </div>
     <div class="gal-filters" id="galFilters"></div>
     <div id="galGrid" class="gal-grid"></div>
@@ -705,7 +705,7 @@ var EVENTS = {
            meal:'午宴', tables:'8 桌（惠婷同學 6・裕煒 2）', style:'復古／蕾絲、珍珠', dress:'一進 vissi → 二進＋送客 vissi'}
 };
 var EVENT_KEYS = ['0306','0327'];
-var GALLERY_CATS = ['婚紗','妝髮','婚紗照','場地','喜帖小物','花藝','佈置','其他'];
+var GALLERY_CATS = ['婚紗','妝髮','場地','花藝','佈置','其他'];
 
 /* 造型照片預設清單（照片檔放在 GitHub 的 images 資料夾）；場次空白＝兩場共用 */
 var DEFAULT_GALLERY = [
@@ -720,11 +720,6 @@ var DEFAULT_GALLERY = [
   ['','妝髮','妝髮參考 2','images/makeup-2.jpg',''],
   ['','妝髮','妝髮參考 3','images/makeup-3.jpg',''],
   ['','妝髮','妝髮參考 4','images/makeup-4.jpg',''],
-  ['','喜帖小物','喜帖選項：紙本蕾絲','images/invite-lace.jpg','11/20 和芊澐見面討論'],
-  ['','喜帖小物','喜帖選項：水彩市役所','images/invite-watercolor.jpg','11/20 和芊澐見面討論'],
-  ['','婚紗照','11/13 婚紗照・vissi 魚尾','images/prewedding-vissi-mermaid.jpg',''],
-  ['','婚紗照','11/13 婚紗照・後生短洋裝','images/prewedding-short-dress.jpg',''],
-  ['','婚紗照','11/13 婚紗照・wade 復古','images/prewedding-wade.jpg',''],
   ['','場地','台中市役所・婚宴場地 1','https://img.gowedding.tw/wp-content/uploads/2024/11/2024111805171391.jpg',''],
   ['','場地','台中市役所・婚宴場地 2','https://img.gowedding.tw/wp-content/uploads/2024/11/2024111805171697.jpg',''],
   ['','場地','台中市役所・婚宴場地 3','https://img.gowedding.tw/wp-content/uploads/2024/11/2024111805172160.jpg',''],
@@ -886,7 +881,7 @@ var PAY_METHODS = [['cash','現金'],['credit card','信用卡'],['LINE','行動
   function evName(k){ var e = EVENTS[k || currentEvent]; return slashDate(e.date).slice(5) + ' ' + e.label; }
 
   // ---------- 基本資料 ----------
-  document.title = namesLine + '・婚禮派對手帖';
+  document.title = namesLine + '・世界浪漫婚禮規劃';
   document.getElementById('hGroom').textContent = CONFIG.groom;
   document.getElementById('hBride').textContent = CONFIG.bride;
   document.getElementById('pGroom').textContent = CONFIG.groomFull;
@@ -1554,6 +1549,9 @@ var PAY_METHODS = [['cash','現金'],['credit card','信用卡'],['LINE','行動
   }
 
   // ================= 當天流程 =================
+  // 當天流程依開始時間排序；沒填時間的排在最後（依 order）
+  function itinKey(r){ var m = String(r.time || '').match(/^(\d{1,2}):(\d{2})$/); return m ? (+m[1]) * 60 + (+m[2]) : 100000 + r.order; }
+  function itinSort(a, b){ var d = itinKey(a) - itinKey(b); return d !== 0 ? d : a.order - b.order; }
   var ITIN_SHEET_COL = {time:'開始時間', end_time:'結束時間', outline:'大綱', summary:'概要內容', music:'音樂', screen:'投影幕', props:'道具', note:'備註'};
   function itinFields(row){
     return {id:row.id, event:row.event, '開始時間':row.time, '結束時間':row.end_time, '大綱':row.outline, '概要內容':row.summary, '音樂':row.music, '投影幕':row.screen, '道具':row.props, '備註':row.note, order:row.order};
@@ -1599,7 +1597,7 @@ var PAY_METHODS = [['cash','現金'],['credit card','信用卡'],['LINE','行動
   function renderItin(){
     var tbody = document.getElementById('itinContainer');
     tbody.innerHTML = '';
-    var rows = forEvent(state.Itinerary).sort(function(a,b){ return a.order - b.order; });
+    var rows = forEvent(state.Itinerary).sort(itinSort);
     if(rows.length === 0){
       tbody.innerHTML = '<tr><td colspan="9"><div class="seed-box">' + (loadedOnce ? '正在準備 ' + esc(evName()) + ' 的流程草案…' : '正在讀取…') + '</div></td></tr>';
       return;
@@ -1636,7 +1634,7 @@ var PAY_METHODS = [['cash','現金'],['credit card','信用卡'],['LINE','行動
   function exportItinExcel(){
     if(typeof XLSX === 'undefined'){ alert('匯出功能沒有載入成功，請檢查網路後重新整理頁面再試一次。'); return; }
     var e = ev();
-    var rows = forEvent(state.Itinerary).sort(function(a,b){ return a.order - b.order; });
+    var rows = forEvent(state.Itinerary).sort(itinSort);
     var aoa = [
       [slashDate(e.date) + ' ' + namesLine + ' ' + e.label + '・當天流程（' + e.venue + ' ' + e.meal + '）'],
       ['資料更新時間：' + (lastSyncTime || '')], [],
